@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.21.
+signed via the Module::Signature module, version 0.06.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,14 +14,14 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 59ed094fa89271664e6104331859f21e752db7ed Changes
+SHA1 33faef2e4ac6902ef67091a903db7a6b581fc572 Changes
 SHA1 7c7c1408719df3afeaf5d07b3c85c8b39ded5d36 MANIFEST
 SHA1 32efd71e763d7e4a3cc699b189cd81479615be2b MANIFEST.SKIP
 SHA1 2031f5b70589cb721d94e8d978c2002a53a90e17 Makefile.PL
 SHA1 764e1738ab56ea82e0e746a75be34c5e46f569d3 README
 SHA1 94507c747fb08f6829abcd7dd2cbaa536fe06f62 bin/b2g.pl
 SHA1 ec793fd255bfa5c7f91356133cebd9fd9587b43e bin/g2b.pl
-SHA1 ad2cfc7a2b2d696e64df3163774e302a248fa9d4 lib/Encode/HanConvert.pm
+SHA1 1f6e8fdf92a47ecb7f120539b0d0869c9239c099 lib/Encode/HanConvert.pm
 SHA1 d1be048d5dd5e63dc93e89263a11b79d8fcfd5d1 lib/Encode/HanConvert/Perl.pm-orig
 SHA1 2faa949f820a569b97d8d2e7ba6338ca63afc205 map/b2g_map.txt
 SHA1 c0764c819a301f8ab80fdec66ce359ff50096d5f map/b2g_map.utf8
@@ -42,7 +42,7 @@ SHA1 325cecec4c25d579634f4a423ccf91b9330cb330 t/zhengqi_b.gbk
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.1 (FreeBSD)
 
-iD8DBQE99296tLPdNzw1AaARAg+7AKCG0f2SjoEnPS+EhBRKbbxIw4BFXwCdGBLB
-Fm5rxY0bzlTmhxs6hrgEx9Q=
-=R10S
+iD8DBQE+CDOutLPdNzw1AaARAqmRAJ9KtvYUSfjqGuNuRUtivlZh//DrVgCgkcdx
+KXvN8EtLL0nM+NWkoiAji28=
+=r3WP
 -----END PGP SIGNATURE-----

@@ -1,4 +1,17 @@
 ____________________________________________________________________________
+[  2746] By: autrijus                              on 2002/12/18  03:54:24
+        Log: * changes and signatures.
+	   ! Changes SIGNATURE
+____________________________________________________________________________
+[  2741] By: autrijus                              on 2002/12/17  14:46:39
+        Log: * doggy reported that import list is broken. whoops.
+	   ! lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  2676] By: autrijus                              on 2002/12/11  16:51:46
+        Log: * changes and signatures.
+	   + SIGNATURE
+	   ! Changes MANIFEST
+____________________________________________________________________________
 [  2675] By: autrijus                              on 2002/12/11  16:37:28
         Log: * Truly 0.10 now, with broken tests temporarily suppressed.
 	   ! lib/Encode/HanConvert.pm t/1-basic.t

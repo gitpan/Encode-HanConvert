@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #4 $ $Change: 2675 $ $DateTime: 2002/12/11 16:37:28 $
+# $Revision: #5 $ $Change: 2741 $ $DateTime: 2002/12/17 14:46:39 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -14,7 +14,7 @@ $VERSION = '0.10';
 
 use base 'Exporter';
 
-if (eval "use Encode qw|encode decode from_to|; 1") {
+if (eval "use Encode qw|encode decode from_to encode_utf8 decode_utf8|; 1") {
     require XSLoader;
     XSLoader::load(__PACKAGE__, $VERSION);
 }
