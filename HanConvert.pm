@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/HanConvert.pm $ $Author: autrijus $
-# $Revision: #1 $ $Change: 3336 $ $DateTime: 2002/03/03 00:54:35 $
+# $Revision: #2 $ $Change: 3341 $ $DateTime: 2002/03/03 21:43:55 $
 
 package Encode::HanConvert;
 use 5.007002;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -13,56 +13,89 @@ our @EXPORT = qw(
 our @EXPORT_OK = qw(simple trad);
 
 use base 'Exporter';
-use Encode qw|encode decode|;
+use Encode qw|encode decode from_to|;
 use XSLoader;
 
 XSLoader::load('Encode::HanConvert',$VERSION);
 
 sub big5_to_gb ($) {
     require Encode::CN;
-    encode('euc-cn', decode('big5-simp', $_[0])) ;
+
+    local $_[0] = $_[0] if defined wantarray;
+    from_to($_[0], 'big5-simp' => 'euc-cn');
+    return $_[0];
 }
+
 sub gb_to_big5 ($) {
     require Encode::TW;
-    encode('big5', decode('euc-cn-trad', $_[0]));
+
+    local $_[0] = $_[0] if defined wantarray;
+    from_to($_[0], 'euc-cn-trad' => 'big5');
+    return $_[0];
 }
 
 sub trad_to_simp ($) {
     require Encode::CN;
-    decode('euc-cn', encode('euc-cn-trad', $_[0]));
+
+    return decode('euc-cn', encode('euc-cn-trad', $_[0]))
+	if (defined wantarray);
+
+    $_[0] = decode('euc-cn', encode('euc-cn-trad', $_[0]));
 }
 
 sub simp_to_trad ($) {
     require Encode::TW;
-    decode('big5', encode('big5-simp', $_[0]));
+
+    return decode('big5', encode('big5-simp', $_[0]))
+	if (defined wantarray);
+
+    $_[0] = decode('big5', encode('big5-simp', $_[0]));
 }
 
-sub big5_to_simp ($) { decode('big5-simp', $_[0]) }
-sub simp_to_big5 ($) { encode('big5-simp', $_[0]) }
+sub big5_to_simp ($) {
+    return decode('big5-simp', $_[0]) if (defined wantarray);
+    $_[0] = decode('big5-simp', $_[0]);
+}
 
-sub gb_to_trad ($) { decode('euc-cn-trad', $_[0]) }
-sub trad_to_gb ($) { encode('euc-cn-trad', $_[0]) }
+sub simp_to_big5 ($) {
+    return encode('big5-simp', $_[0]) if (defined wantarray);
+    $_[0] = encode('big5-simp', $_[0]);
+}
+
+sub gb_to_trad ($) {
+    return decode('euc-cn-trad', $_[0]) if (defined wantarray);
+    $_[0] = decode('euc-cn-trad', $_[0]);
+}
+
+sub trad_to_gb ($) {
+    return encode('euc-cn-trad', $_[0]) if (defined wantarray);
+    $_[0] = encode('euc-cn-trad', $_[0]);
+}
 
 # For completeness' sake...
 
 sub big5_to_trad ($) {
     require Encode::TW;
-    decode('big5', $_[0]);
+    return decode('big5', $_[0]) if (defined wantarray);
+    $_[0] = decode('big5', $_[0]);
 }
 
 sub trad_to_big5 ($) {
     require Encode::TW;
-    encode('big5', $_[0]);
+    return encode('big5', $_[0]) if (defined wantarray);
+    $_[0] = encode('big5', $_[0]);
 }
 
 sub gb_to_simp ($) {
     require Encode::CN;
-    decode('euc-cn', $_[0]);
+    return decode('euc-cn', $_[0]) if (defined wantarray);
+    $_[0] = decode('euc-cn', $_[0]);
 }
 
 sub simp_to_gb ($) {
     require Encode::CN;
-    encode('euc-cn', $_[0]);
+    return encode('euc-cn', $_[0]) if (defined wantarray);
+    $_[0] = encode('euc-cn', $_[0]);
 }
 
 # Lingua::ZH::HanConvert drop-in replacement -- not exported by default
@@ -102,6 +135,9 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
     $trad = big5_to_trad($big5); # Big5 to Traditional
     $big5 = trad_to_big5($trad); # Traditional to Big5
 
+    # All functions may be used in void context to transform $_[0]
+    big5_to_gb($string); # transform $string from big5 to gb
+
     # Drop-in replacement functions for Lingua::ZH::HanConvert
     use Encode::HanConvert qw(trad simple); # not exported by default
 
@@ -140,6 +176,11 @@ the line discipline syntax to perform the conversion implicitly:
     open BIG5, '>:encoding(big5)',       'big5.txt';   # as big-5
     print BIG5, <EUC>;
 
+Or, more interestingly:
+
+    use encoding 'big5-simp';
+    print "¤¤¤å"; # prints simplified chinese in unicode
+
 =head1 COMPARISON
 
 Although L<Lingua::ZH::HanConvert> module already provides mapping
@@ -174,6 +215,8 @@ processor that restores the correct character.
 =head1 SEE ALSO
 
 L<Encode>, L<Lingua::ZH::HanConvert>, L<Text::Iconv>
+
+The F<b2g.pl> and F<g2b.pl> utilities installed with this module.
 
 =head1 ACKNOWLEDGEMENTS
 

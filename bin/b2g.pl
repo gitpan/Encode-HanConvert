@@ -1,5 +1,30 @@
+#!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/b2g.pl $ $Author: autrijus $
-# $Revision: #1 $ $Change: 3336 $ $DateTime: 2002/03/03 00:54:35 $
+# $Revision: #2 $ $Change: 3341 $ $DateTime: 2002/03/03 21:43:55 $
+
+$VERSION = '0.02';
+
+=head1 NAME
+
+b2g.pl, g2b.pl - Convert between GB2312 (EUC-CN) <=> Big5 conversion
+
+=head1 SYNOPSIS
+
+B<b2g.pl> [ I<file> ...]
+B<g2b.pl> [ I<file> ...]
+
+=head1 DESCRIPTION
+
+The B<b2g.pl>/B<g2b.pl> utility reads files sequentially, convert them
+between GB2312 and Big5, then writing them to the standard output.  The
+file operands are processed in command-line order.  If file is a single
+dash (C<->) or absent, this program reads from the standard input.
+
+Example usage:
+
+    % g2b.pl < gb2312.txt > big5.txt
+
+=cut
 
 use utf8;
 use strict;
@@ -26,15 +51,5 @@ while (my $ARGV = shift) {
 }
 
 sub print_usage {
-    print <<'.';
-USAGE: b2g [OPTIONS] [FILES] [-]
-
-  Reads Simplified Chinese text from FILES, and outputs Traditional Chinese.
-
-USAGE: g2b [OPTIONS] [FILES] [-]
-
-  Reads Traditional Chinese text from FILES, and outputs Simplified Chinese.
-
-.
-    exit;
+    system("perldoc", $0);
 }

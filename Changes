@@ -1,0 +1,16 @@
+____________________________________________________________________________
+[  3341] By: autrijus                              on 2002/03/03  21:43:55
+        Log: * This be Encode::HanConvert v0.02.
+             * the conversion functions now performs in-place editing in void context.
+             * documentations and #! lines for bin/ utilities.
+	   ! HanConvert.pm bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3340] By: autrijus                              on 2002/03/03  21:34:28
+        Log: * better table; hc++
+	   ! Encode/big5-simp.enc Encode/euc-cn-trad.enc
+____________________________________________________________________________
+[  3336] By: autrijus                              on 2002/03/03  00:54:35
+        Log: * Encode::HanConvert.
+	   + Encode/big5-simp.enc Encode/euc-cn-trad.enc HanConvert.pm
+	   + MANIFEST Makefile.PL README bin/b2g.pl bin/g2b.pl compile
+	   + encode.h

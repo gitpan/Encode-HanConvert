@@ -6,5 +6,6 @@ HanConvert.pm
 MANIFEST			This list of files
 Makefile.PL
 README
+Changes
 compile
 encode.h
