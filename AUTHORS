@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/AUTHORS $
-# $Revision: #6 $ $Change: 7248 $ $DateTime: 2003/07/30 03:01:38 $
+# $Revision: #7 $ $Change: 10738 $ $DateTime: 2004/06/03 20:56:41 $
 
 Here is a list of people and their CPAN id, extracted from the Changes
 file and the mailing list archives.  These people have either submitted
@@ -7,28 +7,9 @@ patches or suggestions, or their bug reports or comments have inspired
 the appropriate patches.  Corrections, additions, deletions welcome:
 
 Alan Chen
-Andy Lester		(PETDANCE)
-Antti Lankila
-Arthur Bergman		(ABERGMAN)
-Bill Atkins		(BATKINS)
 Chia-Liang Kao		(CLKAO)
-Glenn Mabbutt
-Hirosi Taguti
-Iain Truskett		(SPOON)
-Indy Singh
-Jan Dubois		(JDB)
 Jedi Lin
-Jeff Goff		(JGOFF)
-Jesse Vincent		(JESSE)
 Kuang-Che Wu
-Markus Jansen
-Mattia Barbon		(MBARBON)
-Matt Sergeant		(MSERGEANT)
-Nicholas Clark		(NWCLARK)
-Randal L. Schwartz	(MERLYN)
-Robert Allerstorfer
-Robert Creager		(RCREAGER)
+Mitrophan Chin
 Tim Conrow
-Ton Hospel		(THOSPEL)
 Tulan W. Hu
-Uri Guttman		(URI)

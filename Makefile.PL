@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/Makefile.PL $ $Author: autrijus $
-# $Revision: #11 $ $Change: 5965 $ $DateTime: 2003/05/19 06:15:34 $
+# $Revision: #12 $ $Change: 10738 $ $DateTime: 2004/06/03 20:56:41 $
 
 use strict;
 use ExtUtils::MakeMaker;
@@ -33,7 +33,7 @@ BEGIN {
     @MAKEOPTS = (
 	EXE_FILES	=> [ <bin/*> ],
 	ABSTRACT	=> 'Traditional and Simplified Chinese mappings',
-	AUTHOR		=> 'Autrijus Tang (autrijus@autrijus.org)',
+	AUTHOR		=> 'Autrijus Tang <autrijus@autrijus.org>',
 	NAME		=> 'Encode::HanConvert',
 	VERSION_FROM	=> "lib/Encode/HanConvert.pm",
 	'dist'		=> {

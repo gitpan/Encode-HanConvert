@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #17 $ $Change: 7248 $ $DateTime: 2003/07/30 03:01:38 $
+# $Revision: #18 $ $Change: 10738 $ $DateTime: 2004/06/03 20:56:41 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.28';
+$VERSION = '0.29';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -117,8 +117,8 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.28 of Encode::HanConvert, released
-July 30, 2003.
+This document describes version 0.29 of Encode::HanConvert, released
+June 4, 2004.
 
 =head1 SYNOPSIS
 
@@ -283,7 +283,7 @@ Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2002, 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2002, 2003, 2004 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.

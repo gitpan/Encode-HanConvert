@@ -1,8 +1,8 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/b2g.pl $ $Author: autrijus $
-# $Revision: #11 $ $Change: 4445 $ $DateTime: 2003/02/27 12:09:56 $
+# $Revision: #12 $ $Change: 10738 $ $DateTime: 2004/06/03 20:56:41 $
 
-$VERSION = '0.09';
+$VERSION = '0.10';
 
 =head1 NAME
 
@@ -349,7 +349,7 @@ Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2002, 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2002, 2003, 2004 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.

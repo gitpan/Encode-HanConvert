@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert/Perl.pm-orig $ $Author: autrijus $
-# $Revision: #7 $ $Change: 7248 $ $DateTime: 2003/07/30 03:01:38 $
+# $Revision: #8 $ $Change: 10738 $ $DateTime: 2004/06/03 20:56:41 $
 
 package Encode::HanConvert::Perl;
 
@@ -7,7 +7,7 @@ use strict;
 use base 'Exporter';
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION	= '0.04';
+$VERSION	= '0.05';
 @EXPORT		= qw(big5_to_gb gb_to_big5);
 
 ### perl 5.006 ###
@@ -151,7 +151,7 @@ Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2002, 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2002, 2003, 2004 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.

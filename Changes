@@ -1,4 +1,13 @@
 ____________________________________________________________________________
+[ 10738] By: autrijus                              on 2004/06/03  20:56:41
+        Log: * This be 0.29.
+             * Bump copyright years to 2004.
+             * Mitrophan Chin reported that g2b.pl's "-p" support
+             was backwards.	Oops.
+	   ! AUTHORS Makefile.PL README bin/b2g.pl
+	   ! bin/g2b.pl lib/Encode/HanConvert.pm
+	   ! lib/Encode/HanConvert/Perl.pm-orig
+____________________________________________________________________________
 [  7248] By: autrijus                              on 2003/07/30  03:01:38
         Log: * This be 0.28.
              * Tulan H. Wu pointed out that Encode::HanConvert::Perl
@@ -14,11 +23,6 @@ ____________________________________________________________________________
              5.00503's parser. reported by statue.
 	   ! lib/Encode/HanConvert.pm
 ____________________________________________________________________________
-[  5967] By: autrijus                              on 2003/05/19  06:25:54
-        Log: * changes and signatures.
-	   + META.yml
-	   ! Changes MANIFEST SIGNATURE
-____________________________________________________________________________
 [  5966] By: autrijus                              on 2003/05/19  06:18:31
         Log: * This be 0.26.
 	   ! lib/Encode/HanConvert.pm
@@ -33,10 +37,6 @@ ____________________________________________________________________________
 	       be used.
 	   ! AUTHORS map/b2g_map.txt map/b2g_map.utf8
 ____________________________________________________________________________
-[  5595] By: autrijus                              on 2003/05/04  04:04:07
-        Log: * changes and signatures.
-	   ! Changes SIGNATURE
-____________________________________________________________________________
 [  5594] By: autrijus                              on 2003/05/04  03:56:59
         Log: * This be 0.25.
 	   ! Makefile.PL
@@ -50,10 +50,6 @@ ____________________________________________________________________________
 [  4090] By: autrijus                              on 2003/02/05  04:18:14
         Log: * some more rt-inspired terminologies.
 	   ! bin/b2g.pl bin/g2b.pl
-____________________________________________________________________________
-[  3949] By: autrijus                              on 2003/01/28  00:05:51
-        Log: * changes and signatures.
-	   ! Changes SIGNATURE
 ____________________________________________________________________________
 [  3948] By: autrijus                              on 2003/01/27  23:57:50
         Log: * last-minute typo correction.
@@ -106,18 +102,10 @@ ____________________________________________________________________________
         Log: * add some debug for jedi
 	   ! Makefile.PL
 ____________________________________________________________________________
-[  3925] By: autrijus                              on 2003/01/27  20:58:44
-        Log: * changes and signatures.
-	   ! Changes SIGNATURE
-____________________________________________________________________________
 [  3922] By: autrijus                              on 2003/01/27  20:49:47
         Log: * 0.23.
              * oops, g2b.pl was broken.
 	   ! bin/b2g.pl bin/g2b.pl lib/Encode/HanConvert.pm
-____________________________________________________________________________
-[  3837] By: autrijus                              on 2003/01/25  15:32:52
-        Log: * changes and signatures.
-	   ! Changes SIGNATURE
 ____________________________________________________________________________
 [  3835] By: autrijus                              on 2003/01/25  13:43:43
         Log: * This be 0.22.
@@ -128,10 +116,6 @@ ____________________________________________________________________________
              * -p was broken; now fixed.
              * -p now works correctly in conjunction with -u.
 	   ! bin/b2g.pl bin/g2b.pl
-____________________________________________________________________________
-[  3818] By: autrijus                              on 2003/01/25  08:29:19
-        Log: * changes and signatures.
-	   ! Changes MANIFEST.SKIP SIGNATURE
 ____________________________________________________________________________
 [  3817] By: autrijus                              on 2003/01/25  08:22:24
         Log: * This be 0.21, the 'b2g.pl -u' edition.
@@ -151,10 +135,6 @@ ____________________________________________________________________________
 	   + AUTHORS
 	   ! MANIFEST bin/b2g.pl bin/g2b.pl
 ____________________________________________________________________________
-[  3582] By: autrijus                              on 2003/01/16  20:22:27
-        Log: * changes and signatures.
-	   ! Changes SIGNATURE
-____________________________________________________________________________
 [  3581] By: autrijus                              on 2003/01/16  20:18:57
         Log: * This be 0.20, the 2003 edition.
 	   ! Makefile.PL README lib/Encode/HanConvert.pm
@@ -170,22 +150,9 @@ ____________________________________________________________________________
         Log: * oops, missing the signature test.
 	   + t/0-signature.t
 ____________________________________________________________________________
-[  2887] By: autrijus                              on 2002/12/24  10:04:45
-        Log: * changes and signatures.
-	   ! Changes SIGNATURE
-____________________________________________________________________________
-[  2746] By: autrijus                              on 2002/12/18  03:54:24
-        Log: * changes and signatures.
-	   ! Changes SIGNATURE
-____________________________________________________________________________
 [  2741] By: autrijus                              on 2002/12/17  14:46:39
         Log: * doggy reported that import list is broken. whoops.
 	   ! lib/Encode/HanConvert.pm
-____________________________________________________________________________
-[  2676] By: autrijus                              on 2002/12/11  16:51:46
-        Log: * changes and signatures.
-	   + SIGNATURE
-	   ! Changes MANIFEST
 ____________________________________________________________________________
 [  2675] By: autrijus                              on 2002/12/11  16:37:28
         Log: * Truly 0.10 now, with broken tests temporarily suppressed.
