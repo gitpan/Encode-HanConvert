@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/HanConvert.pm $ $Author: autrijus $
-# $Revision: #5 $ $Change: 3369 $ $DateTime: 2002/03/06 12:27:48 $
+# $Revision: #7 $ $Change: 3893 $ $DateTime: 2002/04/18 09:25:31 $
 
 package Encode::HanConvert;
-use 5.007002;
+use 5.007003;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 our @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -18,7 +18,7 @@ use base 'Exporter';
 use Encode qw|encode decode from_to|;
 use XSLoader;
 
-XSLoader::load('Encode::HanConvert',$VERSION);
+XSLoader::load(__PACKAGE__, $VERSION);
 
 sub big5_to_gb ($) {
     local $^W; # shuts Encode::HZ's redefine warnings up
@@ -119,8 +119,8 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.03 of Encode::HanCovert, released
-March 7, 2002.
+This document describes version 0.04 of Encode::HanConvert, released
+April 18, 2002.
 
 =head1 SYNOPSIS
 
@@ -132,7 +132,7 @@ B<g2b.pl> [ I<inputfile> ...] > I<outputfile>
 
 In your program:
 
-    use Encode::HanConvert; # needs perl 5.7.2 or better
+    use Encode::HanConvert; # needs perl 5.7.3 or better
 
     # Conversion between Chinese encodings
     $euc_cn = big5_to_gb($big5); # Big5 to GBK
@@ -170,13 +170,13 @@ Traditional vs. Simplified Chinese conversion, in an efficient,
 flexible way, without resorting to external tools or modules.
 
 After installing this module, you'll have two additional encoding
-formats: 'big5-simp' maps Big5 into Unicode's Simplified Chinese
-(and vice versa), and 'gbk-trad' maps CP936 (better known as GBK)
+formats: C<big5-simp> maps I<Big5> into Unicode's Simplified Chinese
+(and vice versa), and C<gbk-trad> maps I<CP936> (better known as I<GBK>)
 into Unicode's Traditional Chinese and back.
 
 The module exports various C<xxx_to_yyy> functions by default, where
-xxx and yyy are one of C<big5>, C<gb> (GBK/CP936), C<simp> (simplified
-Chinese unicode), or C<trad> (traditional Chinese unicode).
+xxx and yyy are one of C<big5>, C<gb> (i.e. GBK/CP936), C<simp>
+(simplified Chinese unicode), or C<trad> (traditional Chinese unicode).
 
 You may also import C<simple> and C<trad>, which are aliases for
 C<simp_to_trad> and C<trad_to_simp>; this is provided as a drop-in
@@ -199,7 +199,7 @@ the line discipline syntax to perform the conversion implicitly
 Or, more interestingly:
 
     use encoding 'big5-simp';
-    print "中文"; # prints simplified chinese in unicode
+    print "中文"; # prints simplified Chinese in unicode
 
 =head1 COMPARISON
 
@@ -227,7 +227,7 @@ their result is nearly identical with this module.
 
 =head1 CAVEATS
 
-Please note that from versino 0.03 and above, this module support the
+Please note that from version 0.03 and above, this module support the
 more expressive range B<GBK> instead of B<EUC-CN>. This may cause
 incompatibilities with older fonts. Existing program should rename
 C<euc-cn-trad> into C<gbk-trad>; sorry for the inconvenience.
@@ -236,6 +236,10 @@ This module does not preserve one-to-many mappings; it blindly chooses
 the most frequently used substitutions, instead of presenting the user
 multiple choices. This can be remedied by a dictionary-based post
 processor that restores the correct character.
+
+As of version 0.04, this mapping is I<complete>: All displayable
+GBK and Big5 characters are mappable to each other, although substitute
+characters are used where there's no direct corresponding characters.
 
 =head1 ACKNOWLEDGEMENTS
 

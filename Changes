@@ -1,4 +1,27 @@
 ____________________________________________________________________________
+[  3895] By: autrijus                              on 2002/04/18  09:26:57
+        Log: * This be Encode::HanConvert, versoin 0.04.
+	   ! README
+____________________________________________________________________________
+[  3894] By: autrijus                              on 2002/04/18  09:25:53
+        Log: * reflect changed ucm files.
+	   ! MANIFEST Makefile.PL
+____________________________________________________________________________
+[  3893] By: autrijus                              on 2002/04/18  09:25:31
+        Log: * use enc2xs instead of compile.
+             * the mapping is made complete.
+	   - compile encode.h
+	   ! HanConvert.pm
+____________________________________________________________________________
+[  3491] By: autrijus                              on 2002/03/20  18:04:42
+        Log: * typo in POD.
+             * correct the test anomalies.
+	   ! HanConvert.pm t/1-basic.t
+____________________________________________________________________________
+[  3373] By: autrijus                              on 2002/03/06  12:32:58
+        Log: * changes.
+	   ! Changes
+____________________________________________________________________________
 [  3372] By: autrijus                              on 2002/03/06  12:30:52
         Log: * This be 0.03.
              * updated manifest.

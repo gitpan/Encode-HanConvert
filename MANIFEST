@@ -1,14 +1,12 @@
 bin/b2g.pl
 bin/g2b.pl
-Encode/big5-simp.enc
-Encode/gbk-trad.enc
+big5-simp.ucm
+gbk-trad.ucm
 HanConvert.pm
 MANIFEST			This list of files
 Makefile.PL
 README
 Changes
-compile
-encode.h
 t/1-basic.t
 t/daode.b5
 t/daode.gbk
