@@ -1,4 +1,26 @@
 ____________________________________________________________________________
+[  3817] By: autrijus                              on 2003/01/25  08:22:24
+        Log: * This be 0.21, the 'b2g.pl -u' edition.
+	   ! lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  3801] By: autrijus                              on 2003/01/24  21:18:22
+        Log: * the binmode() only makes sense to 5.8 folks.
+	   ! bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3800] By: autrijus                              on 2003/01/24  21:17:33
+        Log: * add unicode conversion capability to b2g and g2b.
+	   ! bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3665] By: autrijus                              on 2003/01/19  19:46:57
+        Log: * statue points out the perl5.003's podchecker doesn't like
+	       us.
+	   + AUTHORS
+	   ! MANIFEST bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3582] By: autrijus                              on 2003/01/16  20:22:27
+        Log: * changes and signatures.
+	   ! Changes SIGNATURE
+____________________________________________________________________________
 [  3581] By: autrijus                              on 2003/01/16  20:18:57
         Log: * This be 0.20, the 2003 edition.
 	   ! Makefile.PL README lib/Encode/HanConvert.pm

@@ -10,6 +10,7 @@ map/ucm2map.pl				Generate Map from UCM Files - Not Installed
 map/umap2ucm.pl				Generate UCM from UMap files - Not Installed
 lib/Encode/HanConvert.pm		Traditional and Simplified Chinese mappings
 lib/Encode/HanConvert/Perl.pm-orig	Perl-based Encode::HanConvert
+AUTHORS					List of servers
 MANIFEST				This list of files
 MANIFEST.SKIP 				List of files to skip
 Makefile.PL				Makefile writer

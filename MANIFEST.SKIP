@@ -1,6 +1,11 @@
-^MANIFEST.SKIP$
+^MANIFEST.bak$
+^HanConvert..*$
 ^big5-simp.ucm$
 ^gbk-trad.ucm$
+^trad-simp.ucm$
+^simp-trad.ucm$
 ^lib/Encode/HanConvert/Perl.pm$
 ^blib/.*
+^t/.*u$
 ^Makefile
+^pm_to_blib$

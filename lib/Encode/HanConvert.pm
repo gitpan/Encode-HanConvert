@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #7 $ $Change: 3581 $ $DateTime: 2003/01/16 20:18:57 $
+# $Revision: #8 $ $Change: 3817 $ $DateTime: 2003/01/25 08:22:24 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.20';
+$VERSION = '0.21';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -115,16 +115,16 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.20 of Encode::HanConvert, released
-January 17, 2003.
+This document describes version 0.21 of Encode::HanConvert, released
+January 25, 2003.
 
 =head1 SYNOPSIS
 
 As command line utilities:
 
-B<b2g.pl> [ I<inputfile> ...] > I<outputfile>
+B<b2g.pl> [ B<-p> ] [ B<-u> ] [ I<inputfile> ...] > I<outputfile>
 
-B<g2b.pl> [ I<inputfile> ...] > I<outputfile>
+B<g2b.pl> [ B<-p> ] [ B<-u> ] [[ I<inputfile> ...] > I<outputfile>
 
 In your program:
 

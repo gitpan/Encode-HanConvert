@@ -1,8 +1,8 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/g2b.pl $ $Author: autrijus $
-# $Revision: #2 $ $Change: 3578 $ $DateTime: 2003/01/16 17:39:16 $
+# $Revision: #5 $ $Change: 3801 $ $DateTime: 2003/01/24 21:18:22 $
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 =head1 NAME
 
@@ -10,7 +10,7 @@ g2b.pl - Convert from GBK (CP936) to Big5
 
 =head1 SYNOPSIS
 
-B<g2b.pl> [ -p ] [ I<inputfile> ...] > I<outputfile>
+B<g2b.pl> [ B<-p> ] [ B<-u> ] [ I<inputfile> ...] > I<outputfile>
 
 =head1 DESCRIPTION
 
@@ -20,41 +20,44 @@ file operands are processed in command-line order.  If file is a single
 dash (C<->) or absent, this program reads from the standard input.
 
 The C<-p> switch enables rudimentary phrase-oriented substition via a
-small built-in lexicon.
+small built-in lexicon.  The C<-u> switch specifies that both the
+input and output streams should be UTF-8 encoded.
 
 Example usage:
 
     % g2b.pl -p < gbk.txt > big5.txt
+    % g2b.pl -pu < simp.txt > trad.txt
 
 =cut
 
 use strict;
+use Getopt::Std;
 
-(system("perldoc", $0), exit) if (grep /^-h/i, @ARGV);
-
-$SIG{__WARN__} = sub {};
-
-require Encode::HanConvert;
 sub MAP ();
 
-if ($ARGV[0] eq '-p') {
-    shift @ARGV;
-
-    my $KEYS = join('|', map quotemeta, sort { length($b) <=> length($a) } keys %{+MAP});
-    my $MAP  = +MAP;
-
-    while (<>) {
-	Encode::HanConvert::gb_to_big5($_);
-	{ use bytes; s/($KEYS)/$MAP->{$1}/g }
-	print;
-    }
+my %opts;
+BEGIN {
+    getopts('hup', \%opts);
+    if ($opts{h}) { system("perldoc", $0); exit }
+    $SIG{__WARN__} = sub {};
 }
-else {
-    while (<>) {
-	Encode::HanConvert::gb_to_big5($_);
-	print;
-    }
-}    
+
+use constant UTF8 => $opts{u};
+use constant DICT => $opts{d};
+
+use Encode::HanConvert;
+
+if (UTF8 and $] >= 5.008) { binmode(STDIN, ':utf8'); binmode(STDOUT, ':utf8') }
+
+my $KEYS = join('|', sort { length($b) <=> length($a) } keys %{+MAP}) if DICT;
+my $MAP  = +MAP if DICT;
+
+while (<>) {
+    if (UTF8) { Encode::HanConvert::simp_to_trad($_) }
+	 else { Encode::HanConvert::gb_to_big5($_) }
+    if (DICT) { use bytes; s/($KEYS)/$MAP->{$1}/g }
+    print;
+}
 
 use constant MAP => { reverse (
 '¤A¤Ó' => '¥H¤Ó',
