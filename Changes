@@ -1,4 +1,59 @@
 ____________________________________________________________________________
+[  3948] By: autrijus                              on 2003/01/27  23:57:50
+        Log: * last-minute typo correction.
+	   ! bin/b2g.pl
+____________________________________________________________________________
+[  3947] By: autrijus                              on 2003/01/27  23:51:34
+        Log: * This be 0.24.
+             * avoids costly eval STRING.
+	   ! lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  3946] By: autrijus                              on 2003/01/27  23:50:51
+        Log: * 5.6.x can now use -u or -p... but still not -pu.
+	   ! bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3945] By: autrijus                              on 2003/01/27  23:40:48
+        Log: * fix spotting non-utf8 map.
+	   ! lib/Encode/HanConvert/Perl.pm-orig
+	   ! map/map2pm.pl
+____________________________________________________________________________
+[  3944] By: autrijus                              on 2003/01/27  23:40:39
+        Log: * test both XS and non-XS in tests.
+	   ! t/1-basic.t
+____________________________________________________________________________
+[  3940] By: autrijus                              on 2003/01/27  23:07:06
+        Log: * proper utf8-on stuff.
+	   ! lib/Encode/HanConvert/Perl.pm-orig
+____________________________________________________________________________
+[  3939] By: autrijus                              on 2003/01/27  22:52:26
+        Log: * '/usr/bin/env perl' isn't as intuitive as
+	       '/usr/bin/perl'.
+	   ! map/map2pm.pl map/map2ucm.pl map/ucm2map.pl
+	   ! map/umap2ucm.pl
+____________________________________________________________________________
+[  3938] By: autrijus                              on 2003/01/27  22:48:39
+        Log: * the last two fixes was prompted by jedi lin.
+	   ! AUTHORS
+____________________________________________________________________________
+[  3937] By: autrijus                              on 2003/01/27  22:44:58
+        Log: * fix cases where > 5.8 but no cc available.
+             * new, correct utf8 maps.
+	   ! Makefile.PL lib/Encode/HanConvert.pm
+	   ! map/b2g_map.utf8 map/g2b_map.utf8
+	   ! map/map2pm.pl
+____________________________________________________________________________
+[  3936] By: autrijus                              on 2003/01/27  22:25:48
+        Log: * should be fixed.
+	   ! Makefile.PL
+____________________________________________________________________________
+[  3935] By: autrijus                              on 2003/01/27  22:22:08
+        Log: * add some debug for jedi
+	   ! Makefile.PL
+____________________________________________________________________________
+[  3925] By: autrijus                              on 2003/01/27  20:58:44
+        Log: * changes and signatures.
+	   ! Changes SIGNATURE
+____________________________________________________________________________
 [  3922] By: autrijus                              on 2003/01/27  20:49:47
         Log: * 0.23.
              * oops, g2b.pl was broken.

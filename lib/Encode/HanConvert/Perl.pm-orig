@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert/Perl.pm-orig $ $Author: autrijus $
-# $Revision: #3 $ $Change: 3581 $ $DateTime: 2003/01/16 20:18:57 $
+# $Revision: #5 $ $Change: 3945 $ $DateTime: 2003/01/27 23:40:48 $
 
 package Encode::HanConvert::Perl;
 
@@ -58,35 +58,41 @@ sub gb_to_big5 ($) {
 ### perl 5.006 ###
 
 sub trad_to_simp ($) {
-    use utf8;
+    use utf8; # 5.006
+    require Encode if $] >= 5.008;
 
     %t2s = eval q*use utf8;(
 	### include b2g_map.utf8 ###
     )* unless %t2s;
 
     if (defined wantarray) {
-	my $var = $_[0]; # XXX: utf8_on
+	my $var = $_[0];
+	Encode::_utf8_on($_[0]) if $] >= 5.008;
 	$var =~ s/(\S)/$t2s{$1} || $1/eg;
 	return $var;
     }
     else {
+	Encode::_utf8_on($_[0]) if $] >= 5.008;
 	$_[0] =~ s/(\S)/$t2s{$1} || $1/eg;
     }
 }
 
 sub simp_to_trad ($) {
     use utf8; # 5.006
+    require Encode if $] >= 5.008;
 
     %s2t = eval q*use utf8;(
 	### include g2b_map.utf8 ###
     )* unless %s2t;
 
     if (defined wantarray) {
-	my $var = $_[0]; # XXX: utf8_on
+	my $var = $_[0];
+	Encode::_utf8_on($_[0]) if $] >= 5.008;
 	$var =~ s/(\S)/$s2t{$1} || $1/eg;
 	return $var;
     }
     else {
+	Encode::_utf8_on($_[0]) if $] >= 5.008;
 	$_[0] =~ s/(\S)/$s2t{$1} || $1/eg;
     }
 }

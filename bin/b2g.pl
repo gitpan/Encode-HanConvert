@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/b2g.pl $ $Author: autrijus $
-# $Revision: #7 $ $Change: 3922 $ $DateTime: 2003/01/27 20:49:47 $
+# $Revision: #9 $ $Change: 3948 $ $DateTime: 2003/01/27 23:57:50 $
 
 $VERSION = '0.09';
 
@@ -32,6 +32,11 @@ The C<-u> switch specifies that both the input and output streams should
 be UTF-8 encoded.  If not specified, the input stream is assumed to be
 in Big5, and the output will be encoded in GBK.
 
+=head1 CAVEATS
+
+In pure-perl implementations (pre-5.8 perl or without a C compiler),
+C<-p> and C<-u> cannot be used together.
+
 =cut
 
 use strict;
@@ -46,12 +51,12 @@ BEGIN {
     $SIG{__WARN__} = sub {};
 }
 
-use constant UTF8 => ($] >= 5.008 and $opts{u});
-use constant DICT => $opts{p};
+use constant UTF8 => $opts{u};
+use constant DICT => ($opts{p} and (!UTF8 or $] >= 5.008));
 
 use Encode::HanConvert;
 
-if (UTF8) { binmode(STDIN, ':utf8'); binmode(STDOUT, ':utf8') }
+if (UTF8 and $] >= 5.008) { binmode(STDIN, ':utf8'); binmode(STDOUT, ':utf8') }
 
 my $KEYS = join('|', sort { length($b) <=> length($a) } keys %{+MAP}) if DICT;
 my $MAP  = +MAP if DICT;

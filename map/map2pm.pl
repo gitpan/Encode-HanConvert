@@ -1,6 +1,6 @@
-#!/usr/bin/env perl
+#!/usr/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/map/map2pm.pl $ $Author: autrijus $
-# $Revision: #2 $ $Change: 647 $ $DateTime: 2002/08/15 15:17:46 $
+# $Revision: #5 $ $Change: 3945 $ $DateTime: 2003/01/27 23:40:48 $
 
 use strict;
 use File::Spec;
@@ -19,15 +19,17 @@ open OUT, '>'. File::Spec->catfile(
 while (<IN>) {
     print OUT $_;
     if (/### include (\S+)/) {
-	open INC, File::Spec->catdir($path, $1) or die $!;
+	my $file = $1;
+	my $is_utf8 = ($file =~ /utf8/);
+	open INC, File::Spec->catdir($path, $file) or die $!;
 	<INC>; <INC>;
 	while (<INC>) {
-	    $_ = substr($_, 0, 5);
+	    $_ = substr($_, 0, 5) . "\n" unless $is_utf8;
 	    s/\\/\\\\\\/g;
 	    s/^/'/;
 	    s/ /' => '/;
 	    s/$/',/;
-	    print OUT $_, "\n";
+	    print OUT $_;
 	}
 	close INC;
     }

@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/Makefile.PL $ $Author: autrijus $
-# $Revision: #5 $ $Change: 3581 $ $DateTime: 2003/01/16 20:18:57 $
+# $Revision: #8 $ $Change: 3937 $ $DateTime: 2003/01/27 22:44:58 $
 
 use strict;
 use ExtUtils::MakeMaker;
@@ -10,6 +10,18 @@ use vars qw(@MAKEOPTS $Path);
 
 use File::Spec;
 use File::Basename;
+
+# check if we can run some command
+sub _can_run {
+    my $command = shift;
+
+    for my $dir (split /$Config{path_sep}/, $ENV{PATH}) {
+        my $abs = File::Spec->catfile($dir, $command);
+        return $abs if $abs = MM->maybe_command($abs);
+    }
+
+    return;
+}
 
 BEGIN {
     $Path = dirname($0);
@@ -29,7 +41,7 @@ BEGIN {
 	},
     );
     
-    if ($] < 5.007003) {
+    if ($] < 5.007003 or !_can_run($Config{cc})) {
 	print "Encode.pm support not possible; Byte <=> Unicode mappings will not be available.\n";
 	print "Unicode support not possible; Unicode mappings will not be available.\n"
 	    if $] < 5.006;
@@ -56,7 +68,7 @@ my ($enc2xs, $encode_h) = ();
 PATHLOOP:
 for my $d (@Config{qw/bin sitebin vendorbin/}, 
 	   (split /$Config{path_sep}/o, $ENV{PATH})){
-    for my $f (map ($_, "$_.bat"), ('enc2xs', "enc2xs$Config{version}")) {
+    for my $f (map {$_, "$_.bat"} ('enc2xs', "enc2xs$Config{version}")) {
         my $path = File::Spec->catfile($d, $f);
         -r $path and $enc2xs = $path and last PATHLOOP;
     }

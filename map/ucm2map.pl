@@ -1,6 +1,6 @@
-#!/usr/bin/env perl
+#!/usr/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/map/ucm2map.pl $ $Author: autrijus $
-# $Revision: #1 $ $Change: 1 $ $DateTime: 2002/06/11 15:35:12 $
+# $Revision: #2 $ $Change: 3939 $ $DateTime: 2003/01/27 22:52:26 $
 
 use strict;
 use Encode 1.41;

@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #11 $ $Change: 3922 $ $DateTime: 2003/01/27 20:49:47 $
+# $Revision: #13 $ $Change: 3947 $ $DateTime: 2003/01/27 23:51:34 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.23';
+$VERSION = '0.24';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -16,10 +16,12 @@ use base 'Exporter';
 
 if (eval "use Encode qw|encode decode from_to encode_utf8 decode_utf8|; 1") {
     require XSLoader;
-    XSLoader::load(__PACKAGE__, $VERSION);
+    eval { XSLoader::load(__PACKAGE__, $VERSION) }
+	or eval {local $^W; require Encode::HanConvert::Perl; Encode::HanConvert::Perl->import; 1}
+	    or die "Can't load Perl-based Converter: $@";
 }
 else {
-    eval 'local $^W; use Encode::HanConvert::Perl; 1'
+    eval {local $^W; require Encode::HanConvert::Perl; Encode::HanConvert::Perl->import; 1}
 	or die "Can't load Perl-based Converter: $@";
 }
 
@@ -117,7 +119,7 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.23 of Encode::HanConvert, released
+This document describes version 0.24 of Encode::HanConvert, released
 January 28, 2003.
 
 =head1 SYNOPSIS

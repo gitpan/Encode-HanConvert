@@ -14,26 +14,26 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 986daa3c8a311630183ba34793511b582957ad94 AUTHORS
-SHA1 4ea435f7bc934d045dde6dee32ed8fd97cb4e118 Changes
+SHA1 4bdb969ca3bbc3043f79adf63cc1d2861a18cc35 AUTHORS
+SHA1 57a6de634d564db98fb4ea9bcf5c5c114116ab21 Changes
 SHA1 818f8e9b84dbb1b2f548199bb22eb239e5d5e4d9 MANIFEST
 SHA1 d14bbfd03930c7ad07f0e50cf817b08e42299058 MANIFEST.SKIP
-SHA1 53b5499db5d884760970510e79d1bae69f1c8345 Makefile.PL
+SHA1 0456cea862896b5580bb8fa92f9ce19978647947 Makefile.PL
 SHA1 5278a3d88243a7832d09f9196d198d095595eb83 README
-SHA1 1338cbb6448ceb4d20697b426a7b0a190144cab8 bin/b2g.pl
-SHA1 fac4645e20485be7c034aa14c8e1e0aef0f3d0df bin/g2b.pl
-SHA1 b27e58b38d1b86abe27189b9e477cc736ad850a9 lib/Encode/HanConvert.pm
-SHA1 ff7a06473389512ccd2aeb511a07cfcac957e118 lib/Encode/HanConvert/Perl.pm-orig
+SHA1 ebb5730858ab930e63c9331b594d1849a9391a03 bin/b2g.pl
+SHA1 a93e83ccec236973742b3becd5721a9e902d04c4 bin/g2b.pl
+SHA1 bf1d183476e01eee5d2af5e1e51e440d0d218e79 lib/Encode/HanConvert.pm
+SHA1 be2401a92f8a92d68f0cb58fd83be3cdea6a0ae7 lib/Encode/HanConvert/Perl.pm-orig
 SHA1 2faa949f820a569b97d8d2e7ba6338ca63afc205 map/b2g_map.txt
-SHA1 c0764c819a301f8ab80fdec66ce359ff50096d5f map/b2g_map.utf8
+SHA1 43cc2d4e7baf95e24de65e7d66e7ed23773020d1 map/b2g_map.utf8
 SHA1 dc06a5b3492fa75ae8471fd4784067f07e15e07d map/g2b_map.txt
-SHA1 9671b6ee24c1a8538c9f1d49f2edb7975824bd52 map/g2b_map.utf8
-SHA1 0441e357cd7caf9d349cb9cf8b3a05ab8ce9099a map/map2pm.pl
-SHA1 34bac7636e59e7ee8f24f1a4e393a43ce904edf7 map/map2ucm.pl
-SHA1 039a8c9b8ad1a23fe9653b2ee8758b7f60fbfbc3 map/ucm2map.pl
-SHA1 335f41c4d9e43cc5b78426932871b45066a02302 map/umap2ucm.pl
+SHA1 f54c68f0a7dc60259d310161947e3bb95a99d034 map/g2b_map.utf8
+SHA1 ed467054e922a2d1724bec8d1bb8c4408dc7476d map/map2pm.pl
+SHA1 94d245e4bda7e2219c88f965aa9595622bb9fbe1 map/map2ucm.pl
+SHA1 c047487a5b50aa6c37629bc3c6ea364ed25904dc map/ucm2map.pl
+SHA1 dfa4cf0c3ff30f6719fd2900a17aa2a2dcc8dc57 map/umap2ucm.pl
 SHA1 d0d5f740628c73eb7f53edc34351dfa20d6f95e0 t/0-signature.t
-SHA1 a7ae4b83b2c7230efbd5e1cec99090c44afb5e0c t/1-basic.t
+SHA1 c444f867864a4e83c44a6e3da7ec46d0f7a505c9 t/1-basic.t
 SHA1 9306fcf697159a51e4979b96d8bbb1ae9d3834d3 t/daode.b5
 SHA1 9e3c273d27cbd6cb521238153add907fa935da58 t/daode.gbk
 SHA1 150be0f55f7911f4fa2ea660ba3396481e4a767f t/daode_g.b5
@@ -43,7 +43,7 @@ SHA1 325cecec4c25d579634f4a423ccf91b9330cb330 t/zhengqi_b.gbk
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.1 (FreeBSD)
 
-iD8DBQE+NZ1htLPdNzw1AaARAohpAJ41bnQd8ge4+0ybK4eWzxUpXTbcUQCfU2ln
-bvjILDTDJj/FMzsdQ6+pYVs=
-=UHIH
+iD8DBQE+NchgtLPdNzw1AaARAhUbAKCTYnkdCDch4V4aFKSCuSLsJ+loJwCgvCYb
+y31oi2Kyonr31DmQUGDJyUI=
+=oWSo
 -----END PGP SIGNATURE-----
