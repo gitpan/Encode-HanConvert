@@ -3,7 +3,7 @@ use strict;
 use ExtUtils::MakeMaker;
 
 my %tables = ('BIG5-SIMP'	=> ['big5-simp.enc'],
-	      'EUC-CN-TRAD'	=> ['euc-cn-trad.enc'],
+	      'GBK-TRAD'	=> ['gbk-trad.enc'],
              );
 
 my $name = 'HanConvert';

@@ -1,7 +1,71 @@
 ____________________________________________________________________________
+[  3372] By: autrijus                              on 2002/03/06  12:30:52
+        Log: * This be 0.03.
+             * updated manifest.
+	   ! MANIFEST
+____________________________________________________________________________
+[  3371] By: autrijus                              on 2002/03/06  12:28:18
+        Log: * a test suite.
+	   + t/1-basic.t t/daode.b5 t/daode.gbk t/daode_g.b5 t/zhengqi.b5
+	   + t/zhengqi.gbk t/zhengqi_b.gbk
+____________________________________________________________________________
+[  3370] By: autrijus                              on 2002/03/06  12:28:05
+        Log: * more robust (and fast) scripts.
+	   ! bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3369] By: autrijus                              on 2002/03/06  12:27:48
+        Log: * clean up euc-cn.
+             * document the change.
+	   - Encode/euc-cn-trad.enc
+	   ! HanConvert.pm Makefile.PL
+____________________________________________________________________________
+[  3368] By: autrijus                              on 2002/03/06  12:27:16
+        Log: * upgrade to GBK.
+	   + Encode/gbk-trad.enc
+	   ! Encode/big5-simp.enc
+____________________________________________________________________________
+[  3367] By: autrijus                              on 2002/03/06  10:37:16
+        Log: * updates acknoledgements.
+             * mentions g2b.pl and b2g.pl in POD.
+	   ! HanConvert.pm
+____________________________________________________________________________
+[  3366] By: autrijus                              on 2002/03/06  10:36:32
+        Log: * Updated POD pages in utilities.
+	   ! bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3365] By: autrijus                              on 2002/03/06  10:35:45
+        Log: * updated codepoint table, courtesy of doggy @
+	     http://www.miniasp.com/.
+	   ! Encode/big5-simp-miss.txt Encode/big5-simp.enc
+	   ! Encode/euc-cn-trad-miss.txt Encode/euc-cn-trad.enc
+____________________________________________________________________________
+[  3364] By: autrijus                              on 2002/03/06  00:24:22
+        Log: * updated big5-simp from miniasp.
+             * missed characters.
+	   + Encode/big5-simp-miss.txt Encode/euc-cn-trad-miss.txt
+	   ! Encode/big5-simp.enc
+____________________________________________________________________________
+[  3349] By: autrijus                              on 2002/03/04  18:33:39
+        Log: * the real integration
+	   ! compile
+____________________________________________________________________________
+[  3348] By: autrijus                              on 2002/03/04  18:32:39
+        Log: * integrate mainline.
+	  !> compile
+____________________________________________________________________________
+[  3344] By: autrijus                              on 2002/03/04  07:51:15
+        Log: * doc patch from jedi.
+	   ! HanConvert.pm
+____________________________________________________________________________
+[  3342] By: autrijus                              on 2002/03/03  21:45:49
+        Log: * changes.
+	   + Changes
+	   ! MANIFEST
+____________________________________________________________________________
 [  3341] By: autrijus                              on 2002/03/03  21:43:55
         Log: * This be Encode::HanConvert v0.02.
-             * the conversion functions now performs in-place editing in void context.
+             * the conversion functions now performs in-place editing in
+	     void context.
              * documentations and #! lines for bin/ utilities.
 	   ! HanConvert.pm bin/b2g.pl bin/g2b.pl
 ____________________________________________________________________________
