@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # $File: //member/autrijus/Encode-HanConvert/map/ucm2map.pl $ $Author: autrijus $
-# $Revision: #1 $ $Change: 3909 $ $DateTime: 2002/04/19 04:49:47 $
+# $Revision: #2 $ $Change: 3940 $ $DateTime: 2002/04/22 10:13:23 $
 
 use strict;
 use Encode 1.41;
@@ -26,7 +26,7 @@ open OUT, '>g2b_map.txt' or die $!;
 print OUT "GB B5\n-----\n";
 
 while (<IN>) {
-    next unless /^<U(....)> \\x(..)\\x(..) \|0/;
+    next unless /^<U(....)> \\x(..)\\x(..) \|\d/;
     print OUT chr(hex($2)), chr(hex($3)), " ", 
 	      encode('big5', chr(hex($1))), "\n";
 }

@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #1 $ $Change: 3916 $ $DateTime: 2002/04/19 07:16:24 $
+# $Revision: #2 $ $Change: 3940 $ $DateTime: 2002/04/22 10:13:23 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -29,7 +29,7 @@ sub big5_to_gb ($) {
     require Encode::CN;
 
     local $_[0] = $_[0] if defined wantarray;
-    from_to($_[0], 'big5-simp' => 'cp936');
+    from_to($_[0], 'big5-simp' => 'gbk');
     return $_[0];
 }
 
@@ -45,10 +45,10 @@ sub trad_to_simp ($) {
     local $^W;
     require Encode::CN;
 
-    return decode('cp936', encode('gbk-trad', $_[0]))
+    return decode('gbk', encode('gbk-trad', $_[0]))
 	if (defined wantarray);
 
-    $_[0] = decode('cp936', encode('gbk-trad', $_[0]));
+    $_[0] = decode('gbk', encode('gbk-trad', $_[0]));
 }
 
 sub simp_to_trad ($) {
@@ -97,15 +97,15 @@ sub trad_to_big5 ($) {
 sub gb_to_simp ($) {
     local $^W;
     require Encode::CN;
-    return decode('cp936', $_[0]) if (defined wantarray);
-    $_[0] = decode('cp936', $_[0]);
+    return decode('gbk', $_[0]) if (defined wantarray);
+    $_[0] = decode('gbk', $_[0]);
 }
 
 sub simp_to_gb ($) {
     local $^W;
     require Encode::CN;
-    return encode('cp936', $_[0]) if (defined wantarray);
-    $_[0] = encode('cp936', $_[0]);
+    return encode('gbk', $_[0]) if (defined wantarray);
+    $_[0] = encode('gbk', $_[0]);
 }
 
 # Lingua::ZH::HanConvert drop-in replacement -- not exported by default
@@ -123,8 +123,8 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.06 of Encode::HanConvert, released
-April 19, 2002.
+This document describes version 0.07 of Encode::HanConvert, released
+April 22, 2002.
 
 =head1 SYNOPSIS
 
@@ -140,8 +140,8 @@ In your program:
     use Encode::HanConvert; 
 
     # Conversion between Chinese encodings
-    $euc_cn = big5_to_gb($big5); # Big5 to GBK
-    $big5 = gb_to_big5($euc_cn); # GBK to Big5
+    $gbk = big5_to_gb($big5);    # Big5 to GBK
+    $big5 = gb_to_big5($gbk);    # GBK to Big5
 
     # Conversion between Perl's Unicode strings
     $simp = trad_to_simp($trad); # Traditional to Simplified
@@ -150,17 +150,17 @@ In your program:
     # Conversion between Chinese encoding and Unicode strings
     $simp = big5_to_simp($big5); # Big5 to Simplified
     $big5 = simp_to_big5($simp); # Simplified to Big5
-    $trad = gb_to_trad($euc_cn); # GBK to Traditional
-    $euc_cn = trad_to_gb($trad); # Traditional to GBK
+    $trad = gb_to_trad($gbk);    # GBK to Traditional
+    $gbk = trad_to_gb($trad);    # Traditional to GBK
 
     # For completeness' sake... (no conversion, just encode/decode)
-    $simp = gb_to_simp($euc_cn); # GBK to Simplified
-    $euc_cn = simp_to_gb($simp); # Simplified to GBK
+    $simp = gb_to_simp($gbk);    # GBK to Simplified
+    $gbk = simp_to_gb($simp);    # Simplified to GBK
     $trad = big5_to_trad($big5); # Big5 to Traditional
     $big5 = trad_to_big5($trad); # Traditional to Big5
 
     # All functions may be used in void context to transform $_[0]
-    big5_to_gb($string); # transform $string from big5 to gb
+    big5_to_gb($string);         # convert $string from Big5 to GBK
 
     # Drop-in replacement functions for Lingua::ZH::HanConvert
     use Encode::HanConvert qw(trad simple); # not exported by default
@@ -181,7 +181,7 @@ instead.
 
 After installing this module, you'll have two additional encoding
 formats: C<big5-simp> maps I<Big5> into Unicode's Simplified Chinese
-(and vice versa), and C<gbk-trad> maps I<CP936> (better known as I<GBK>)
+(and vice versa), and C<gbk-trad> maps I<GBK> (also known as I<CP936>)
 into Unicode's Traditional Chinese and back.
 
 The module exports various C<xxx_to_yyy> functions by default, where
@@ -224,25 +224,26 @@ Also, L<Encode::HanConvert> loads up much faster:
     1.192u 0.046s 0:01.26 97.6% # Encode::HanConvert::Perl
     7.096u 0.015s 0:07.23 98.2% # Lingua::ZH::HanConvert (v0.12)
 
-The difference in actual conversion is much higher. Use 32k text of
-trad=>simp as an example:
+The difference in actual conversion is much more significant. Use 32k
+text of trad => simp as an example:
 
     0.082u 0.031s 0:00.12 91.6% # iconv | b2g | iconv
     0.263u 0.038s 0:00.30 96.6% # Encode::HanConvert
-    1.461u 0.071s 0:01.57 97.4% # Encode::HanConvert::Perl
    23.715u 0.054s 0:24.51 96.9% # Lingua::ZH::HanConvert (v0.12)
 
 The C<b2g> above refers to Yeung and Lee's I<HanZi Converter>, a C-based
 program that maps big5 to gb2312 and back; C<iconv> refers to GNU
-libiconv. If you don't mind the overhead of calling external process,
-their result is nearly identical with this module.
+libiconv. If you don't mind the overhead of calling an external process,
+their result is nearly identical with this module; however, their map
+falls short on rarely-used characters and box-drawing symbols.
 
 =head1 CAVEATS
 
 Please note that from version 0.03 and above, this module support the
 more expressive range B<GBK> instead of B<EUC-CN>. This may cause
-incompatibilities with older fonts. Existing program should rename
-C<euc-cn-trad> into C<gbk-trad>; sorry for the inconvenience.
+incompatibilities with older fonts. Programs using an earlier version
+of this module should rename C<euc-cn-trad> into C<gbk-trad>; sorry for
+the inconvenience.
 
 This module does not preserve one-to-many mappings; it blindly chooses
 the most frequently used substitutions, instead of presenting the user
@@ -262,8 +263,9 @@ all of them. Any help on completing this mapping are very appreciated.
 The conversion table used in this module comes from various sources,
 including B<Lingua::ZH::HanConvert> by David Chan, B<hc> by Ricky
 Yeung & Fung F. Lee, and B<Doggy Chinese Big5-GB Conversion Master>
-from Doggy Digital Creative Inc. (L<http://www.miniasp.com/>), as
-well as mappings used in Microsoft Word 2000, Far East edition.
+from Doggy Digital Creative Inc. (L<http://www.miniasp.com/>), Rei-Li
+Chen (rexchen), as well as mappings used in Microsoft Word 2000, Far
+East edition.
 
 The F<*.ucm> files are checked against test files generated by GNU
 libiconv with kind permission from Bruno Haible.

@@ -22,11 +22,12 @@ while (<IN>) {
 	open INC, File::Spec->catdir($path, $1) or die $!;
 	<INC>; <INC>;
 	while (<INC>) {
+	    $_ = substr($_, 0, 5);
 	    s/\\/\\\\/g;
 	    s/^/'/;
 	    s/ /' => '/;
 	    s/$/',/;
-	    print OUT $_;
+	    print OUT $_, "\n";
 	}
 	close INC;
     }

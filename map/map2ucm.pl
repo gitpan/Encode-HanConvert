@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # $File: //member/autrijus/Encode-HanConvert/map/map2ucm.pl $ $Author: autrijus $
-# $Revision: #1 $ $Change: 3909 $ $DateTime: 2002/04/19 04:49:47 $
+# $Revision: #2 $ $Change: 3940 $ $DateTime: 2002/04/22 10:13:23 $
 
 use strict;
 use Encode 1.41;
@@ -13,20 +13,27 @@ conv(File::Spec->catdir($path, 'g2b_map.txt') => 'gbk-trad', 'big5');
 
 sub conv {
     my ($src, $target, $enc) = @_;
+    my %count;
 
     open IN, $src or die $!;
     open OUT, ">$target.ucm" or die $!;
 
-    print OUT "<code_set_name> \"$target\"\n";
+    print OUT << ".";
+# This is generated from $src -- please change that file instead.
+# Yes, this .ucm map is not round-trip safe; HanConvert is a lossy operation.
+<code_set_name> "$target"
+.
     print OUT +HEADER();
     print OUT +B5HEADER() unless $target =~ /gbk/i;
 
     <IN>; <IN>;
     while (<IN>) {
-	printf OUT "<U%04X> \\x%02X\\x%02X |0\n",
-		   ord(decode($enc, substr($_, 3, 2))),
+	my $uchar = decode($enc, substr($_, 3, 2)) or next;
+	printf OUT "<U%04X> \\x%02X\\x%02X |%u\n",
+		   ord($uchar),
 		   ord(substr($_, 0, 1)),
-		   ord(substr($_, 1, 1));
+		   ord(substr($_, 1, 1)),
+		   0;	# XXX - suggestions welcome to the fallback char here
     }
 
     print OUT +B5FOOTER() unless $target =~ /gbk/i;

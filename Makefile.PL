@@ -2,11 +2,14 @@
 # $Revision: #6 $ $Change: 3920 $ $DateTime: 2002/04/19 07:24:15 $
 
 use strict;
+use ExtUtils::MakeMaker;
+use Config;
+
+use strict;
 use vars qw(@MAKEOPTS $Path);
 
 use File::Spec;
 use File::Basename;
-use ExtUtils::MakeMaker;
 
 BEGIN {
     $Path = dirname($0);
@@ -41,18 +44,18 @@ my %tables = (
 
 if (grep { ! -e $_ } map { @{$_} } values(%tables)) {
     # build .ucm files first.
-    system($^X, File::Spec->($Path, qw(map map2ucm.pl)));
+    system($^X, File::Spec->catfile($Path, qw(map map2ucm.pl)));
 }
 
 #### DO NOT EDIT BEYOND THIS POINT!
-
 require File::Spec;
 my ($enc2xs, $encode_h) = ();
 PATHLOOP:
-for my $d (split /:/, $ENV{PATH}){
+for my $d (@Config{qw/bin sitebin vendorbin/}, 
+	   (split /$Config{path_sep}/o, $ENV{PATH})){
     for my $f (qw/enc2xs enc2xs5.7.3/){
-	my $path = File::Spec->catfile($d, $f);
-	-x $path and $enc2xs = $path and last PATHLOOP;
+        my $path = File::Spec->catfile($d, $f);
+        -r $path and $enc2xs = $path and last PATHLOOP;
     }
 }
 $enc2xs or die "enc2xs not found!";
@@ -69,13 +72,20 @@ for my $d (@INC){
 print "encode.h is at $encode_h\n";
 
 WriteMakefile(
-	      @MAKEOPTS,
               INC		=> "-I$encode_h",
+#### END_OF_HEADER -- DO NOT EDIT THIS LINE BY HAND! ####
+	      NAME		=> 'Encode::'.$name,
+	      VERSION_FROM	=> "lib/Encode/$name.pm",
 	      OBJECT		=> '$(O_FILES)',
+	      'dist'		=> {
+		  COMPRESS	=> 'gzip -9f',
+		  SUFFIX	=> 'gz',
+		  DIST_DEFAULT => 'all tardist',
+	      },
 	      MAN3PODS	=> {},
 	      PREREQ_PM => {
 			    'Encode'     => "1.41",
-			   },
+                           },
 	      # OS 390 winges about line numbers > 64K ???
 	      XSOPT => '-nolinenumbers',
 	      );
@@ -96,6 +106,9 @@ sub post_initialize
     $self->{'O_FILES'} = [sort keys %o];
     my @files = ("$name.xs");
     $self->{'C'} = ["$name.c"];
+    # The next two lines to make MacPerl Happy -- dankogai via pudge
+    $self->{SOURCE} .= " $name.c"
+        if $^O eq 'MacOS' && $self->{SOURCE} !~ /\b$name\.c\b/;
     # $self->{'H'} = [$self->catfile($self->updir,'encode.h')];
     my %xs;
     foreach my $table (keys %tables) {
