@@ -1,4 +1,24 @@
 ____________________________________________________________________________
+[  7248] By: autrijus                              on 2003/07/30  03:01:38
+        Log: * This be 0.28.
+             * Tulan H. Wu pointed out that Encode::HanConvert::Perl
+             was emitting more than one chars for unicode g2b
+	     translations.
+	   ! AUTHORS lib/Encode/HanConvert.pm
+	   ! lib/Encode/HanConvert/Perl.pm-orig
+	   ! map/map2pm.pl
+____________________________________________________________________________
+[  6135] By: autrijus                              on 2003/05/27  18:55:04
+        Log: * move "=for encoding big5" further down to avoid tripping
+	       over
+             5.00503's parser. reported by statue.
+	   ! lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  5967] By: autrijus                              on 2003/05/19  06:25:54
+        Log: * changes and signatures.
+	   + META.yml
+	   ! Changes MANIFEST SIGNATURE
+____________________________________________________________________________
 [  5966] By: autrijus                              on 2003/05/19  06:18:31
         Log: * This be 0.26.
 	   ! lib/Encode/HanConvert.pm

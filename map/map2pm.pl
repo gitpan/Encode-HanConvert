@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/map/map2pm.pl $ $Author: autrijus $
-# $Revision: #6 $ $Change: 4445 $ $DateTime: 2003/02/27 12:09:56 $
+# $Revision: #7 $ $Change: 7248 $ $DateTime: 2003/07/30 03:01:38 $
 
 use strict;
 use File::Spec;
@@ -24,7 +24,8 @@ while (<IN>) {
 	open INC, File::Spec->catdir($path, $file) or die $!;
 	<INC>; <INC>;
 	while (<INC>) {
-	    $_ = substr($_, 0, 5) . "\n" unless $is_utf8;
+	    chomp;
+	    $_ = substr($_, 0, ($is_utf8 ? 7 : 5)) . "\n";
 	    s/\\/\\\\\\/g;
 	    s/^/'/;
 	    s/ /', '/;

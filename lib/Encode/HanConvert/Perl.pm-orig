@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert/Perl.pm-orig $ $Author: autrijus $
-# $Revision: #6 $ $Change: 4445 $ $DateTime: 2003/02/27 12:09:56 $
+# $Revision: #7 $ $Change: 7248 $ $DateTime: 2003/07/30 03:01:38 $
 
 package Encode::HanConvert::Perl;
 
@@ -7,7 +7,7 @@ use strict;
 use base 'Exporter';
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION	= '0.03';
+$VERSION	= '0.04';
 @EXPORT		= qw(big5_to_gb gb_to_big5);
 
 ### perl 5.006 ###

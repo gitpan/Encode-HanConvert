@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #15 $ $Change: 5966 $ $DateTime: 2003/05/19 06:18:31 $
+# $Revision: #17 $ $Change: 7248 $ $DateTime: 2003/07/30 03:01:38 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.26';
+$VERSION = '0.28';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -111,16 +111,14 @@ sub simple { trad_to_simp($_[0]) };
 
 __END__
 
-=for encoding big5
-
 =head1 NAME
 
 Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.26 of Encode::HanConvert, released
-May 19, 2003.
+This document describes version 0.28 of Encode::HanConvert, released
+July 30, 2003.
 
 =head1 SYNOPSIS
 
@@ -204,6 +202,8 @@ the line discipline syntax to perform the conversion implicitly
     print BIG5, <EUC>;
 
 Or, more interestingly:
+
+=for encoding big5
 
     use encoding 'big5-simp';
     print "¤¤¤å"; # prints simplified Chinese in unicode

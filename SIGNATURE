@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.23.
+signed via the Module::Signature module, version 0.28.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,22 +14,22 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 d834d335510c04a3d9bdb4e78973451a85f82f8f AUTHORS
-SHA1 39dde68c6aa9569d3c140d899d720b4af91a79a3 Changes
+SHA1 defa29d4e306c6e9e874705b07d938b41a7889b9 AUTHORS
+SHA1 354aa1ca31e30a07f005235624208e33c7f4b5f0 Changes
 SHA1 c0832a36d506c72a232bc484010a46eb08cd0fe5 MANIFEST
 SHA1 d14bbfd03930c7ad07f0e50cf817b08e42299058 MANIFEST.SKIP
-SHA1 0e1b8b96eb99682942b890b8603933b23a2589b3 META.yml
+SHA1 0d3350adfe7d23241ea1bca406302ab55e794df8 META.yml
 SHA1 c65468aac6ca9ae0d28fe0c46f96ac7295b7a06a Makefile.PL
 SHA1 5278a3d88243a7832d09f9196d198d095595eb83 README
 SHA1 aeadff841875bfa9a5938de2b6fbf0a9340000d4 bin/b2g.pl
 SHA1 d6fc5de5b944dac320156a40091c3603abb9f257 bin/g2b.pl
-SHA1 e46afc612a99a7ada4c41c1c05e8d158b3437e9e lib/Encode/HanConvert.pm
-SHA1 75e8abd4d853c87b26a5243ea573286a031e60f7 lib/Encode/HanConvert/Perl.pm-orig
+SHA1 b1fee96c6202073f4e47d23358faa7e1fcbd9def lib/Encode/HanConvert.pm
+SHA1 f93f841f99036f8f519fd9ce1e1af705613d92e8 lib/Encode/HanConvert/Perl.pm-orig
 SHA1 ea387659a8513c9aa19ee9b4b3a4307813aeb6e7 map/b2g_map.txt
 SHA1 4fbba6f4ce0fb76d9b5bce165fdf6e36a6473b3e map/b2g_map.utf8
 SHA1 dc06a5b3492fa75ae8471fd4784067f07e15e07d map/g2b_map.txt
 SHA1 f54c68f0a7dc60259d310161947e3bb95a99d034 map/g2b_map.utf8
-SHA1 93a06de6fd2f84dfea20d693847699e4a83c3115 map/map2pm.pl
+SHA1 1e738843a58c866e0aa39b64a25904eb8b5f46b9 map/map2pm.pl
 SHA1 94d245e4bda7e2219c88f965aa9595622bb9fbe1 map/map2ucm.pl
 SHA1 c047487a5b50aa6c37629bc3c6ea364ed25904dc map/ucm2map.pl
 SHA1 dfa4cf0c3ff30f6719fd2900a17aa2a2dcc8dc57 map/umap2ucm.pl
@@ -44,7 +44,7 @@ SHA1 325cecec4c25d579634f4a423ccf91b9330cb330 t/zhengqi_b.gbk
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.2 (FreeBSD)
 
-iD8DBQE+yHggtLPdNzw1AaARAkKRAJ488Ahg6y/7h7rR77hfTLSepJ67oACfTUVR
-kEF0zwgsjIGTxJ5m0wVOV3Q=
-=LGMl
+iD8DBQE/JzhctLPdNzw1AaARAkk0AJ9kV63b7+id/625V7P64nLUJSYs/QCgnoC4
+F/i8iFxBS7mg6y9SBEfVp+Y=
+=ahi4
 -----END PGP SIGNATURE-----
