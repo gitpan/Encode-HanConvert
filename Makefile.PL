@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/Makefile.PL $ $Author: autrijus $
-# $Revision: #3 $ $Change: 2673 $ $DateTime: 2002/12/11 15:43:52 $
+# $Revision: #5 $ $Change: 3581 $ $DateTime: 2003/01/16 20:18:57 $
 
 use strict;
 use ExtUtils::MakeMaker;
@@ -56,7 +56,7 @@ my ($enc2xs, $encode_h) = ();
 PATHLOOP:
 for my $d (@Config{qw/bin sitebin vendorbin/}, 
 	   (split /$Config{path_sep}/o, $ENV{PATH})){
-    for my $f (map ($_, "$_.bat"), qw/enc2xs enc2xs5.7.3/){
+    for my $f (map ($_, "$_.bat"), ('enc2xs', "enc2xs$Config{version}")) {
         my $path = File::Spec->catfile($d, $f);
         -r $path and $enc2xs = $path and last PATHLOOP;
     }
@@ -91,6 +91,7 @@ WriteMakefile(
                            },
 	      # OS 390 winges about line numbers > 64K ???
 	      XSOPT => '-nolinenumbers',
+              @MAKEOPTS,
 	      );
 
 package MY;

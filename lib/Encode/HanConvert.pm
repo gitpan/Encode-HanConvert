@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #5 $ $Change: 2741 $ $DateTime: 2002/12/17 14:46:39 $
+# $Revision: #7 $ $Change: 3581 $ $DateTime: 2003/01/16 20:18:57 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.11';
+$VERSION = '0.20';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -115,8 +115,8 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.10 of Encode::HanConvert, released
-December 12, 2002.
+This document describes version 0.20 of Encode::HanConvert, released
+January 17, 2003.
 
 =head1 SYNOPSIS
 
@@ -128,7 +128,8 @@ B<g2b.pl> [ I<inputfile> ...] > I<outputfile>
 
 In your program:
 
-    # needs Encode.pm 1.41; otherwise, autoloads Encode::Convert::Perl 
+    # The XS-based implementation needs Encode.pm 1.41;
+    # otherwise, autoloads the Perl-based Encode::HanConvert::Perl 
     use Encode::HanConvert; 
 
     # Conversion between Chinese encodings
@@ -278,7 +279,7 @@ Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2002 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2002, 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.

@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.06.
+signed via the Module::Signature module, version 0.21.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,15 +14,15 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 33faef2e4ac6902ef67091a903db7a6b581fc572 Changes
+SHA1 aa7064fda568bd3dab172636bbf9e06e9e9602e6 Changes
 SHA1 7c7c1408719df3afeaf5d07b3c85c8b39ded5d36 MANIFEST
 SHA1 32efd71e763d7e4a3cc699b189cd81479615be2b MANIFEST.SKIP
-SHA1 2031f5b70589cb721d94e8d978c2002a53a90e17 Makefile.PL
-SHA1 764e1738ab56ea82e0e746a75be34c5e46f569d3 README
-SHA1 94507c747fb08f6829abcd7dd2cbaa536fe06f62 bin/b2g.pl
-SHA1 ec793fd255bfa5c7f91356133cebd9fd9587b43e bin/g2b.pl
-SHA1 1f6e8fdf92a47ecb7f120539b0d0869c9239c099 lib/Encode/HanConvert.pm
-SHA1 d1be048d5dd5e63dc93e89263a11b79d8fcfd5d1 lib/Encode/HanConvert/Perl.pm-orig
+SHA1 53b5499db5d884760970510e79d1bae69f1c8345 Makefile.PL
+SHA1 5278a3d88243a7832d09f9196d198d095595eb83 README
+SHA1 3940442048558cf3a3a419c2dbbdc16526f1e50e bin/b2g.pl
+SHA1 9382513489c7af67f615e989a5639318712a1fe5 bin/g2b.pl
+SHA1 8825113c867300add2abda4d3bd3939d7e1bc4e5 lib/Encode/HanConvert.pm
+SHA1 ff7a06473389512ccd2aeb511a07cfcac957e118 lib/Encode/HanConvert/Perl.pm-orig
 SHA1 2faa949f820a569b97d8d2e7ba6338ca63afc205 map/b2g_map.txt
 SHA1 c0764c819a301f8ab80fdec66ce359ff50096d5f map/b2g_map.utf8
 SHA1 dc06a5b3492fa75ae8471fd4784067f07e15e07d map/g2b_map.txt
@@ -31,7 +31,7 @@ SHA1 0441e357cd7caf9d349cb9cf8b3a05ab8ce9099a map/map2pm.pl
 SHA1 34bac7636e59e7ee8f24f1a4e393a43ce904edf7 map/map2ucm.pl
 SHA1 039a8c9b8ad1a23fe9653b2ee8758b7f60fbfbc3 map/ucm2map.pl
 SHA1 335f41c4d9e43cc5b78426932871b45066a02302 map/umap2ucm.pl
-SHA1 e11741ba1b7768e6679991875b177fcfdb7d6e70 t/0-signature.t
+SHA1 d0d5f740628c73eb7f53edc34351dfa20d6f95e0 t/0-signature.t
 SHA1 a7ae4b83b2c7230efbd5e1cec99090c44afb5e0c t/1-basic.t
 SHA1 9306fcf697159a51e4979b96d8bbb1ae9d3834d3 t/daode.b5
 SHA1 9e3c273d27cbd6cb521238153add907fa935da58 t/daode.gbk
@@ -42,7 +42,7 @@ SHA1 325cecec4c25d579634f4a423ccf91b9330cb330 t/zhengqi_b.gbk
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.1 (FreeBSD)
 
-iD8DBQE+CDOutLPdNzw1AaARAqmRAJ9KtvYUSfjqGuNuRUtivlZh//DrVgCgkcdx
-KXvN8EtLL0nM+NWkoiAji28=
-=r3WP
+iD8DBQE+JxlvtLPdNzw1AaARAuctAJ9zg6cVcGt5XmFZuqgnvesTjzE6tACffBYu
+jNzSZrIwBZtCF3sFiCT5+qo=
+=uN/f
 -----END PGP SIGNATURE-----

@@ -1,4 +1,23 @@
 ____________________________________________________________________________
+[  3581] By: autrijus                              on 2003/01/16  20:18:57
+        Log: * This be 0.20, the 2003 edition.
+	   ! Makefile.PL README lib/Encode/HanConvert.pm
+	   ! lib/Encode/HanConvert/Perl.pm-orig
+____________________________________________________________________________
+[  3578] By: autrijus                              on 2003/01/16  17:39:16
+        Log: * rudimentary support for phrase-based conversion
+             via the -p switch in b2g.pl/g2b.pl.
+	   ! Makefile.PL bin/b2g.pl bin/g2b.pl
+	   ! lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  2888] By: autrijus                              on 2002/12/24  10:07:04
+        Log: * oops, missing the signature test.
+	   + t/0-signature.t
+____________________________________________________________________________
+[  2887] By: autrijus                              on 2002/12/24  10:04:45
+        Log: * changes and signatures.
+	   ! Changes SIGNATURE
+____________________________________________________________________________
 [  2746] By: autrijus                              on 2002/12/18  03:54:24
         Log: * changes and signatures.
 	   ! Changes SIGNATURE

@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert/Perl.pm-orig $ $Author: autrijus $
-# $Revision: #2 $ $Change: 647 $ $DateTime: 2002/08/15 15:17:46 $
+# $Revision: #3 $ $Change: 3581 $ $DateTime: 2003/01/16 20:18:57 $
 
 package Encode::HanConvert::Perl;
 
@@ -7,7 +7,7 @@ use strict;
 use base 'Exporter';
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION	= '0.02';
+$VERSION	= '0.03';
 @EXPORT		= qw(big5_to_gb gb_to_big5);
 
 ### perl 5.006 ###
@@ -127,11 +127,11 @@ This Perl-based module provides part of the functionality of
 B<Encode::HanConvert>, namely the C<big5_to_gb> and C<gb_to_big5>
 functions.
 
-The implementation is straightforward, and significantly slower than
+The implementation is straightforward, and is significantly slower than
 the XS-based B<Encode::HanConvert>; all Unicode-related functions
 are disabled for pre-5.6.0 perls as well.
 
-This module should only be used in perl 5.7.2 or earlier.
+This module should only be used in perl 5.7.2 or below.
 
 =head1 SEE ALSO
 
@@ -145,7 +145,7 @@ Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2002 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2002, 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.
