@@ -1,8 +1,8 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/b2g.pl $ $Author: autrijus $
-# $Revision: #6 $ $Change: 3834 $ $DateTime: 2003/01/25 13:41:45 $
+# $Revision: #7 $ $Change: 3922 $ $DateTime: 2003/01/27 20:49:47 $
 
-$VERSION = '0.08';
+$VERSION = '0.09';
 
 =head1 NAME
 
@@ -64,7 +64,7 @@ while (<>) {
 }
 
 use constant MAP => DICT && {
-    map { UTF8 ? Encode::decode(gbk => $_) : $_ }
+    map { UTF8 ? Encode::decode(gbk => $_) : $_ } (
 'ÒÒÌ«' => 'ÒÔÌ«',
 'ÒÒÌ«ÍøÂ·' => 'ÒÔÌ«ÍøÂç',
 '¾Å¾Å³Ë·¨±í' => '¾Å¾Å±í',
@@ -326,7 +326,7 @@ use constant MAP => DICT && {
 'šÓÅ£' => 'êóÅ£',
 'ÐkÍ¬' => 'ºúÍ¬',
 '”FÒÂ' => 'µ·ÒÂ',
-};
+) };
 
 __END__
 

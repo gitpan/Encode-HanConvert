@@ -1,4 +1,13 @@
 ____________________________________________________________________________
+[  3922] By: autrijus                              on 2003/01/27  20:49:47
+        Log: * 0.23.
+             * oops, g2b.pl was broken.
+	   ! bin/b2g.pl bin/g2b.pl lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  3837] By: autrijus                              on 2003/01/25  15:32:52
+        Log: * changes and signatures.
+	   ! Changes SIGNATURE
+____________________________________________________________________________
 [  3835] By: autrijus                              on 2003/01/25  13:43:43
         Log: * This be 0.22.
 	   ! lib/Encode/HanConvert.pm
