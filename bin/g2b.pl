@@ -1,8 +1,8 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/g2b.pl $ $Author: autrijus $
-# $Revision: #11 $ $Change: 10738 $ $DateTime: 2004/06/03 20:56:41 $
+# $Revision: #13 $ $Change: 10740 $ $DateTime: 2004/06/03 22:02:31 $
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 =head1 NAME
 
@@ -58,7 +58,7 @@ use Encode::HanConvert;
 
 if (UTF8 and $] >= 5.008) { binmode(STDIN, ':utf8'); binmode(STDOUT, ':utf8') }
 
-my $KEYS = join('|', sort { length($b) <=> length($a) } keys %{+MAP}) if DICT;
+my $KEYS = join('|', map quotemeta, sort { length($b) <=> length($a) } keys %{+MAP}) if DICT;
 my $MAP  = +MAP if DICT;
 
 while (<>) {
@@ -69,7 +69,7 @@ while (<>) {
 }
 
 use constant MAP => DICT && {
-    map { UTF8 ? Encode::decode(big5 => $_) : $_ } reverse (
+    map { UTF8 ? Encode::decode(big5 => $_) : quotemeta($_) } reverse (
 '乙太' => '以太',
 '乙太網路' => '以太網絡',
 '九九乘法表' => '九九表',
@@ -385,6 +385,27 @@ use constant MAP => DICT && {
 '位元組' => '字節',
 '鏈結' => '鏈接',
 '密碼' => '口令',
+'「' => '‘',
+'」' => '’',
+'『' => '“',
+'』' => '”',
+'讚美' => '贊美',
+'讚頌' => '贊頌',
+'讚詞' => '贊詞',
+'檯前' => '台前',
+'檯燈' => '台燈',
+'檯上' => '台上',
+'臺灣' => '台灣',
+'臺北' => '台北',
+'臺南' => '台南',
+'颱風' => '台風',
+'麵粉' => '面粉',
+'麵包' => '面包',
+'麵條' => '面條',
+'炒麵' => '炒面',
+'撈麵' => '撈面',
+'王後' => '王后',
+'母後' => '母后',
 ) }
 __END__
 
