@@ -1,4 +1,52 @@
 ____________________________________________________________________________
+[  3913] By: autrijus                              on 2002/04/19  04:56:13
+        Log: * This be 0.05.
+	   ! HanConvert.pm
+____________________________________________________________________________
+[  3911] By: autrijus                              on 2002/04/19  04:52:24
+        Log: * remove garbages.
+	   - Encode/big5-simp-miss.txt Encode/big5-simp.enc
+	   - Encode/euc-cn-trad-miss.txt Encode/gbk-trad.enc
+	   - big5-simp-miss.txt gb2312-invalid.txt gb2312-miss.txt
+	   - gbk-trad-miss.txt
+____________________________________________________________________________
+[  3910] By: autrijus                              on 2002/04/19  04:50:18
+        Log: * use map2ucm in installation process.
+	   ! HanConvert.pm MANIFEST Makefile.PL README
+____________________________________________________________________________
+[  3909] By: autrijus                              on 2002/04/19  04:49:47
+        Log: * new maps.
+	   + map/b2g_map.txt map/g2b_map.txt map/map2ucm.pl map/ucm2map.pl
+____________________________________________________________________________
+[  3907] By: autrijus                              on 2002/04/19  02:13:52
+        Log: * missing big5 codepoints
+	   ! gbk-trad-miss.txt
+____________________________________________________________________________
+[  3906] By: autrijus                              on 2002/04/19  00:53:34
+        Log: * the corresponding missing big5.
+	   ! big5-simp-miss.txt
+____________________________________________________________________________
+[  3905] By: autrijus                              on 2002/04/19  00:48:52
+        Log: * last batch.
+	   ! gbk-trad-miss.txt
+____________________________________________________________________________
+[  3904] By: autrijus                              on 2002/04/19  00:36:28
+        Log: * gbk mapping now complete. really.
+	   ! gbk-trad-miss.txt
+____________________________________________________________________________
+[  3903] By: autrijus                              on 2002/04/19  00:16:21
+        Log: * corrected missing mappings
+	   ! big5-simp-miss.txt gbk-trad-miss.txt
+____________________________________________________________________________
+[  3902] By: autrijus                              on 2002/04/18  23:48:10
+        Log: * all missed charsets.
+	   + big5-simp-miss.txt gb2312-invalid.txt gb2312-miss.txt
+	   + gbk-trad-miss.txt
+____________________________________________________________________________
+[  3896] By: autrijus                              on 2002/04/18  09:27:56
+        Log: * changes.
+	   ! Changes
+____________________________________________________________________________
 [  3895] By: autrijus                              on 2002/04/18  09:26:57
         Log: * This be Encode::HanConvert, versoin 0.04.
 	   ! README

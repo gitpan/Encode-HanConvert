@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/README $ $Author: autrijus $
-# $Revision: #2 $ $Change: 3895 $ $DateTime: 2002/04/18 09:26:57 $
+# $Revision: #3 $ $Change: 3910 $ $DateTime: 2002/04/19 04:50:18 $
 
 This is the README file for Encode::HanConvert, two encoding
 formats to facilitate mappings between traditional and simplified
@@ -13,6 +13,7 @@ perl Makefile.PL
 make
 make test
 make install
+enc2xs -C	# optional; updates Encode.pm's on-demand loading DB
 
 You will need perl 5.7.3 or better, as well as Encode 1.41 or better.
 

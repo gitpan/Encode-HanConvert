@@ -1,0 +1,5 @@
+^MANIFEST.SKIP$
+^big5-simp.ucm$
+^gbk-trad.ucm$
+^blib/.*
+^Makefile$
