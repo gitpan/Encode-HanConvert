@@ -53,7 +53,7 @@ my ($enc2xs, $encode_h) = ();
 PATHLOOP:
 for my $d (@Config{qw/bin sitebin vendorbin/}, 
 	   (split /$Config{path_sep}/o, $ENV{PATH})){
-    for my $f (qw/enc2xs enc2xs5.7.3/){
+    for my $f ('enc2xs', sprintf("enc2xs%vd", $^V)){
         my $path = File::Spec->catfile($d, $f);
         -r $path and $enc2xs = $path and last PATHLOOP;
     }
@@ -74,20 +74,13 @@ print "encode.h is at $encode_h\n";
 WriteMakefile(
               INC		=> "-I$encode_h",
 #### END_OF_HEADER -- DO NOT EDIT THIS LINE BY HAND! ####
-	      NAME		=> 'Encode::'.$name,
-	      VERSION_FROM	=> "lib/Encode/$name.pm",
 	      OBJECT		=> '$(O_FILES)',
-	      'dist'		=> {
-		  COMPRESS	=> 'gzip -9f',
-		  SUFFIX	=> 'gz',
-		  DIST_DEFAULT => 'all tardist',
-	      },
-	      MAN3PODS	=> {},
 	      PREREQ_PM => {
 			    'Encode'     => "1.41",
                            },
 	      # OS 390 winges about line numbers > 64K ???
 	      XSOPT => '-nolinenumbers',
+	      @MAKEOPTS,
 	      );
 
 package MY;
