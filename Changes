@@ -1,4 +1,18 @@
 ____________________________________________________________________________
+[  3835] By: autrijus                              on 2003/01/25  13:43:43
+        Log: * This be 0.22.
+	   ! lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  3834] By: autrijus                              on 2003/01/25  13:41:45
+        Log: * new round of POD tweaks.
+             * -p was broken; now fixed.
+             * -p now works correctly in conjunction with -u.
+	   ! bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3818] By: autrijus                              on 2003/01/25  08:29:19
+        Log: * changes and signatures.
+	   ! Changes MANIFEST.SKIP SIGNATURE
+____________________________________________________________________________
 [  3817] By: autrijus                              on 2003/01/25  08:22:24
         Log: * This be 0.21, the 'b2g.pl -u' edition.
 	   ! lib/Encode/HanConvert.pm

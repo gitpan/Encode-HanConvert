@@ -1,32 +1,36 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/g2b.pl $ $Author: autrijus $
-# $Revision: #5 $ $Change: 3801 $ $DateTime: 2003/01/24 21:18:22 $
+# $Revision: #6 $ $Change: 3834 $ $DateTime: 2003/01/25 13:41:45 $
 
-$VERSION = '0.06';
+$VERSION = '0.08';
 
 =head1 NAME
 
-g2b.pl - Convert from GBK (CP936) to Big5
+g2b.pl - Simplified to Traditional Chinese converter
 
 =head1 SYNOPSIS
 
 B<g2b.pl> [ B<-p> ] [ B<-u> ] [ I<inputfile> ...] > I<outputfile>
 
-=head1 DESCRIPTION
-
-The B<b2g.pl>/B<g2b.pl> utility reads files sequentially, convert them
-between GBK and Big5, then writing them to the standard output.  The
-file operands are processed in command-line order.  If file is a single
-dash (C<->) or absent, this program reads from the standard input.
-
-The C<-p> switch enables rudimentary phrase-oriented substition via a
-small built-in lexicon.  The C<-u> switch specifies that both the
-input and output streams should be UTF-8 encoded.
-
-Example usage:
+=head1 USAGE
 
     % g2b.pl -p < gbk.txt > big5.txt
     % g2b.pl -pu < simp.txt > trad.txt
+
+=head1 DESCRIPTION
+
+The B<g2b.pl> utility reads files sequentially, converts them from
+Simplified to Traditional Chinese, then writes them to the standard
+output.  The I<inputfile> arguments are processed in command-line order.
+If I<inputfile> is a single dash (C<->) or absent, this program reads
+from the standard input.
+
+The C<-p> switch enables rudimentary phrase-oriented substition via a
+small built-in lexicon.
+
+The C<-u> switch specifies that both the input and output streams should
+be UTF-8 encoded.  If not specified, the input stream is assumed to be
+in GBK, and the output will be encoded in Big5.
 
 =cut
 
@@ -42,12 +46,12 @@ BEGIN {
     $SIG{__WARN__} = sub {};
 }
 
-use constant UTF8 => $opts{u};
-use constant DICT => $opts{d};
+use constant UTF8 => ($] >= 5.008 and $opts{u});
+use constant DICT => $opts{p};
 
 use Encode::HanConvert;
 
-if (UTF8 and $] >= 5.008) { binmode(STDIN, ':utf8'); binmode(STDOUT, ':utf8') }
+if (UTF8) { binmode(STDIN, ':utf8'); binmode(STDOUT, ':utf8') }
 
 my $KEYS = join('|', sort { length($b) <=> length($a) } keys %{+MAP}) if DICT;
 my $MAP  = +MAP if DICT;
@@ -55,11 +59,12 @@ my $MAP  = +MAP if DICT;
 while (<>) {
     if (UTF8) { Encode::HanConvert::simp_to_trad($_) }
 	 else { Encode::HanConvert::gb_to_big5($_) }
-    if (DICT) { use bytes; s/($KEYS)/$MAP->{$1}/g }
+    if (DICT) { s/($KEYS)/$MAP->{$1}/g }
     print;
 }
 
-use constant MAP => { reverse (
+use constant MAP => DICT && {
+    map { UTF8 ? Encode::decode(big5 => $_) : $_ }
 '乙太' => '以太',
 '乙太網路' => '以太網絡',
 '九九乘法表' => '九九表',
@@ -384,7 +389,7 @@ Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2002 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2002, 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.
