@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/AUTHORS $
-# $Revision: #3 $ $Change: 5585 $ $DateTime: 2003/05/03 11:28:07 $
+# $Revision: #5 $ $Change: 5846 $ $DateTime: 2003/05/14 18:28:36 $
 
 Here is a list of people and their CPAN id, extracted from the Changes
 file and the mailing list archives.  These people have either submitted
@@ -20,6 +20,7 @@ Jan Dubois		(JDB)
 Jedi Lin
 Jeff Goff		(JGOFF)
 Jesse Vincent		(JESSE)
+Kuang-Che Wu
 Markus Jansen
 Mattia Barbon		(MBARBON)
 Matt Sergeant		(MSERGEANT)
@@ -28,5 +29,5 @@ Randal L. Schwartz	(MERLYN)
 Robert Allerstorfer
 Robert Creager		(RCREAGER)
 Tim Conrow
-Ton Hospel
+Ton Hospel		(THOSPEL)
 Uri Guttman		(URI)

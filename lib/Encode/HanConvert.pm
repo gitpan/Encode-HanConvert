@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #14 $ $Change: 5585 $ $DateTime: 2003/05/03 11:28:07 $
+# $Revision: #15 $ $Change: 5966 $ $DateTime: 2003/05/19 06:18:31 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.25';
+$VERSION = '0.26';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -119,8 +119,8 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.24 of Encode::HanConvert, released
-January 28, 2003.
+This document describes version 0.26 of Encode::HanConvert, released
+May 19, 2003.
 
 =head1 SYNOPSIS
 

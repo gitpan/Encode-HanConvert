@@ -25,3 +25,4 @@ t/daode_g.b5				Test data file
 t/zhengqi.b5				Test data file
 t/zhengqi.gbk				Test data file
 t/zhengqi_b.gbk				Test data file
+META.yml                                Module meta-data in YAML

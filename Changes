@@ -1,4 +1,22 @@
 ____________________________________________________________________________
+[  5966] By: autrijus                              on 2003/05/19  06:18:31
+        Log: * This be 0.26.
+	   ! lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  5965] By: autrijus                              on 2003/05/19  06:15:34
+        Log: * applying Kogai Device to reduce memory footprint on
+	       compilation.
+	   ! Makefile.PL
+____________________________________________________________________________
+[  5846] By: autrijus                              on 2003/05/14  18:28:36
+        Log: * kcwu spotted a wrong mapping where same-character should
+	       be used.
+	   ! AUTHORS map/b2g_map.txt map/b2g_map.utf8
+____________________________________________________________________________
+[  5595] By: autrijus                              on 2003/05/04  04:04:07
+        Log: * changes and signatures.
+	   ! Changes SIGNATURE
+____________________________________________________________________________
 [  5594] By: autrijus                              on 2003/05/04  03:56:59
         Log: * This be 0.25.
 	   ! Makefile.PL

@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/Makefile.PL $ $Author: autrijus $
-# $Revision: #10 $ $Change: 5594 $ $DateTime: 2003/05/04 03:56:59 $
+# $Revision: #11 $ $Change: 5965 $ $DateTime: 2003/05/19 06:15:34 $
 
 use strict;
 use ExtUtils::MakeMaker;
@@ -62,6 +62,20 @@ if (grep { ! -e $_ } map { @{$_} } values(%tables)) {
     # build .ucm files first.
     system($^X, File::Spec->catfile($Path, qw(map map2ucm.pl)));
     system($^X, File::Spec->catfile($Path, qw(map umap2ucm.pl)));
+}
+
+unless ($ENV{AGGREGATE_TABLES}){
+    my @ucm;
+    for my $k (keys %tables){
+        push @ucm, @{$tables{$k}};
+    }
+    %tables = ();
+    my $seq = 0;
+    for my $ucm (sort @ucm){
+        # 8.3 compliance !
+        my $t = sprintf ("%s_%02d_t", substr($ucm, 0, 2), $seq++);
+        $tables{$t} = [ $ucm ];
+    }
 }
 
 #### DO NOT EDIT BEYOND THIS POINT!
