@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/g2b.pl $ $Author: autrijus $
-# $Revision: #6 $ $Change: 3917 $ $DateTime: 2002/04/19 07:16:45 $
+# $Revision: #1 $ $Change: 1 $ $DateTime: 2002/06/11 15:35:12 $
 
 $VERSION = '0.04';
 

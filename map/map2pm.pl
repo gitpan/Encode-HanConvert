@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # $File: //member/autrijus/Encode-HanConvert/map/map2pm.pl $ $Author: autrijus $
-# $Revision: #1 $ $Change: 3918 $ $DateTime: 2002/04/19 07:17:06 $
+# $Revision: #2 $ $Change: 647 $ $DateTime: 2002/08/15 15:17:46 $
 
 use strict;
 use File::Spec;
@@ -23,13 +23,19 @@ while (<IN>) {
 	<INC>; <INC>;
 	while (<INC>) {
 	    $_ = substr($_, 0, 5);
-	    s/\\/\\\\/g;
+	    s/\\/\\\\\\/g;
 	    s/^/'/;
 	    s/ /' => '/;
 	    s/$/',/;
 	    print OUT $_, "\n";
 	}
 	close INC;
+    }
+    elsif (/### perl (\S+) ###/) {
+	print OUT "=begin comment\n" unless $] >= $1;
+    }
+    elsif (/### \/perl (\S+) ###/) {
+	print OUT "=end comment\n=cut\n" unless $] >= $1;
     }
 }
 

@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/Makefile.PL $ $Author: autrijus $
-# $Revision: #6 $ $Change: 3920 $ $DateTime: 2002/04/19 07:24:15 $
+# $Revision: #3 $ $Change: 2673 $ $DateTime: 2002/12/11 15:43:52 $
 
 use strict;
 use ExtUtils::MakeMaker;
@@ -30,7 +30,9 @@ BEGIN {
     );
     
     if ($] < 5.007003) {
-	print "Encode.pm support not possible; only Big5 <=> GBK will be available.\n";
+	print "Encode.pm support not possible; Byte <=> Unicode mappings will not be available.\n";
+	print "Unicode support not possible; Unicode mappings will not be available.\n"
+	    if $] < 5.006;
 	WriteMakefile (@MAKEOPTS);
 	exit;
     }
@@ -39,12 +41,13 @@ BEGIN {
 # Please edit the following to your taste!
 my $name = 'HanConvert';
 my %tables = (
-    HanConvert_t => [ qw(big5-simp.ucm gbk-trad.ucm) ],
+    HanConvert_t => [ qw(big5-simp.ucm gbk-trad.ucm simp-trad.ucm trad-simp.ucm) ],
 );
 
 if (grep { ! -e $_ } map { @{$_} } values(%tables)) {
     # build .ucm files first.
     system($^X, File::Spec->catfile($Path, qw(map map2ucm.pl)));
+    system($^X, File::Spec->catfile($Path, qw(map umap2ucm.pl)));
 }
 
 #### DO NOT EDIT BEYOND THIS POINT!
@@ -53,7 +56,7 @@ my ($enc2xs, $encode_h) = ();
 PATHLOOP:
 for my $d (@Config{qw/bin sitebin vendorbin/}, 
 	   (split /$Config{path_sep}/o, $ENV{PATH})){
-    for my $f ('enc2xs', sprintf("enc2xs%vd", $^V)){
+    for my $f (map ($_, "$_.bat"), qw/enc2xs enc2xs5.7.3/){
         my $path = File::Spec->catfile($d, $f);
         -r $path and $enc2xs = $path and last PATHLOOP;
     }
@@ -74,13 +77,20 @@ print "encode.h is at $encode_h\n";
 WriteMakefile(
               INC		=> "-I$encode_h",
 #### END_OF_HEADER -- DO NOT EDIT THIS LINE BY HAND! ####
+	      NAME		=> 'Encode::'.$name,
+	      VERSION_FROM	=> "lib/Encode/$name.pm",
 	      OBJECT		=> '$(O_FILES)',
+	      'dist'		=> {
+		  COMPRESS	=> 'gzip -9f',
+		  SUFFIX	=> 'gz',
+		  DIST_DEFAULT => 'all tardist',
+	      },
+	      MAN3PODS	=> {},
 	      PREREQ_PM => {
 			    'Encode'     => "1.41",
                            },
 	      # OS 390 winges about line numbers > 64K ???
 	      XSOPT => '-nolinenumbers',
-	      @MAKEOPTS,
 	      );
 
 package MY;

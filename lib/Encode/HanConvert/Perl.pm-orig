@@ -1,21 +1,30 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert/Perl.pm-orig $ $Author: autrijus $
-# $Revision: #1 $ $Change: 3916 $ $DateTime: 2002/04/19 07:16:24 $
+# $Revision: #2 $ $Change: 647 $ $DateTime: 2002/08/15 15:17:46 $
 
 package Encode::HanConvert::Perl;
 
 use strict;
 use base 'Exporter';
-use vars qw/$VERSION @EXPORT/;
+use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.01';
-@EXPORT  = qw(big5_to_gb gb_to_big5);
+$VERSION	= '0.02';
+@EXPORT		= qw(big5_to_gb gb_to_big5);
 
-my (%b2g, %g2b);
+### perl 5.006 ###
+push @EXPORT,	  qw(trad_to_simp simp_to_trad);
+@EXPORT_OK	= qw(simple trad);
+### /perl 5.006 ###
+
+my (%b2g, %g2b, %t2s, %s2t);
 
 sub big5_to_gb ($) {
-    %b2g = (
+### perl 5.006 ###
+    use bytes;
+### /perl 5.006 ###
+
+    %b2g = eval q*(
 	### include b2g_map.txt ###
-    ) unless %b2g;
+    )* unless %b2g;
 
     if (defined wantarray) {
 	my $var = $_[0];
@@ -28,9 +37,13 @@ sub big5_to_gb ($) {
 }
 
 sub gb_to_big5 ($) {
-    %g2b = (
+### perl 5.006 ###
+    use bytes;
+### /perl 5.006 ###
+
+    %g2b = eval q*(
 	### include g2b_map.txt ###
-    ) unless %g2b;
+    )* unless %g2b;
 
     if (defined wantarray) {
 	my $var = $_[0];
@@ -41,6 +54,49 @@ sub gb_to_big5 ($) {
 	$_[0] =~ s/([\x81-\xFE].)/$g2b{$1}/eg;
     }
 }
+
+### perl 5.006 ###
+
+sub trad_to_simp ($) {
+    use utf8;
+
+    %t2s = eval q*use utf8;(
+	### include b2g_map.utf8 ###
+    )* unless %t2s;
+
+    if (defined wantarray) {
+	my $var = $_[0]; # XXX: utf8_on
+	$var =~ s/(\S)/$t2s{$1} || $1/eg;
+	return $var;
+    }
+    else {
+	$_[0] =~ s/(\S)/$t2s{$1} || $1/eg;
+    }
+}
+
+sub simp_to_trad ($) {
+    use utf8; # 5.006
+
+    %s2t = eval q*use utf8;(
+	### include g2b_map.utf8 ###
+    )* unless %s2t;
+
+    if (defined wantarray) {
+	my $var = $_[0]; # XXX: utf8_on
+	$var =~ s/(\S)/$s2t{$1} || $1/eg;
+	return $var;
+    }
+    else {
+	$_[0] =~ s/(\S)/$s2t{$1} || $1/eg;
+    }
+}
+
+# Lingua::ZH::HanConvert drop-in replacement -- not exported by default
+
+sub trad { simp_to_trad($_[0]) };
+sub simple { trad_to_simp($_[0]) };
+
+### /perl 5.006 ###
 
 1;
 
@@ -58,6 +114,10 @@ Encode::HanConvert::Perl - Perl-based Encode::HanConvert
     $euc_cn = big5_to_gb($big5); # Big5 to GBK
     $big5 = gb_to_big5($euc_cn); # GBK to Big5
 
+    # Conversion between Perl's Unicode strings - v5.6.0+ only
+    $simp = trad_to_simp($trad); # Traditional to Simplified
+    $trad = simp_to_trad($simp); # Simplified to Traditional
+
     # All functions may be used in void context to transform $_[0]
     big5_to_gb($string); # transform $string from big5 to gb
 
@@ -69,7 +129,7 @@ functions.
 
 The implementation is straightforward, and significantly slower than
 the XS-based B<Encode::HanConvert>; all Unicode-related functions
-are disabled as well.
+are disabled for pre-5.6.0 perls as well.
 
 This module should only be used in perl 5.7.2 or earlier.
 

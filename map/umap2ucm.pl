@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
-# $File: //member/autrijus/Encode-HanConvert/map/map2ucm.pl $ $Author: autrijus $
-# $Revision: #1 $ $Change: 1 $ $DateTime: 2002/06/11 15:35:12 $
+# $File: //member/autrijus/Encode-HanConvert/map/umap2ucm.pl $ $Author: autrijus $
+# $Revision: #1 $ $Change: 2672 $ $DateTime: 2002/12/11 15:43:09 $
 
 use strict;
 use Encode 1.41;
@@ -8,11 +8,11 @@ use File::Spec;
 use File::Basename;
 
 my $path = dirname($0);
-conv(File::Spec->catdir($path, 'b2g_map.txt') => 'big5-simp', 'gbk');
-conv(File::Spec->catdir($path, 'g2b_map.txt') => 'gbk-trad', 'big5');
+conv(File::Spec->catdir($path, 'b2g_map.txt') => 'trad-simp', 'gbk', 'big5');
+conv(File::Spec->catdir($path, 'g2b_map.txt') => 'simp-trad', 'big5', 'gbk');
 
 sub conv {
-    my ($src, $target, $enc) = @_;
+    my ($src, $target, $enc, $fenc) = @_;
     my %count;
 
     open IN, $src or die $!;
@@ -29,10 +29,10 @@ sub conv {
     <IN>; <IN>;
     while (<IN>) {
 	my $uchar = decode($enc, substr($_, 3, 2)) or next;
-	printf OUT "<U%04X> \\x%02X\\x%02X |%u\n",
+	my $fchar = encode_utf8(decode($fenc, substr($_, 0, 2))) or next;
+	printf OUT "<U%04X> %s |%u\n",
 		   ord($uchar),
-		   ord(substr($_, 0, 1)),
-		   ord(substr($_, 1, 1)),
+		   join('', map sprintf('\\x%02X', ord($_)), split('', $fchar)),
 		   0;	# XXX - suggestions welcome to the fallback char here
     }
 

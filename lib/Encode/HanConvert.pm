@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
-# $Revision: #2 $ $Change: 3940 $ $DateTime: 2002/04/22 10:13:23 $
+# $Revision: #4 $ $Change: 2675 $ $DateTime: 2002/12/11 16:37:28 $
 
 package Encode::HanConvert;
 use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-$VERSION = '0.08';
+$VERSION = '0.10';
 @EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
@@ -19,9 +19,8 @@ if (eval "use Encode qw|encode decode from_to|; 1") {
     XSLoader::load(__PACKAGE__, $VERSION);
 }
 else {
-    local $^W;
-    eval 'use Encode::HanConvert::Perl; 1'
-	or die "Can't load Perl-based Converter";
+    eval 'local $^W; use Encode::HanConvert::Perl; 1'
+	or die "Can't load Perl-based Converter: $@";
 }
 
 sub big5_to_gb ($) {
@@ -42,22 +41,15 @@ sub gb_to_big5 ($) {
 }
 
 sub trad_to_simp ($) {
-    local $^W;
-    require Encode::CN;
-
-    return decode('gbk', encode('gbk-trad', $_[0]))
+    return decode('trad-simp', encode_utf8($_[0]))
 	if (defined wantarray);
-
-    $_[0] = decode('gbk', encode('gbk-trad', $_[0]));
+    $_[0] = decode('trad-simp', encode_utf8($_[0]));
 }
 
 sub simp_to_trad ($) {
-    require Encode::TW;
-
-    return decode('big5', encode('big5-simp', $_[0]))
+    return decode('simp-trad', encode_utf8($_[0]))
 	if (defined wantarray);
-
-    $_[0] = decode('big5', encode('big5-simp', $_[0]));
+    $_[0] = decode('simp-trad', encode_utf8($_[0]));
 }
 
 sub big5_to_simp ($) {
@@ -123,8 +115,8 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.07 of Encode::HanConvert, released
-April 22, 2002.
+This document describes version 0.10 of Encode::HanConvert, released
+December 12, 2002.
 
 =head1 SYNOPSIS
 

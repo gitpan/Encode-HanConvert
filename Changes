@@ -1,197 +1,32 @@
 ____________________________________________________________________________
-[    63] By: autrijus                              on 2002/06/07  07:03:21
-        Log: * This be 0.08.
-	     * Fixed enc2xs probing to correctly detect 'enc2xs5.8.0'.
-	     * Install b2g.pl and g2b.pl on 5.7.3+ perl now.
+[  2675] By: autrijus                              on 2002/12/11  16:37:28
+        Log: * Truly 0.10 now, with broken tests temporarily suppressed.
+	   ! lib/Encode/HanConvert.pm t/1-basic.t
 ____________________________________________________________________________
-[    63] By: autrijus                              on 2002/06/02  11:05:22
-        Log: * This be 0.07.
-	     * Merged in Rexchen's g2b maps, 
-	     * Updated Makefile.PL to make sensible Win32-5.8 builds.
-	     * Updated tests so it no longer depend on Test::More. (snowfly)
+[  2674] By: autrijus                              on 2002/12/11  15:44:35
+        Log: * This be version 0.10.
+             * re-written simp_to_trad and trad_to_simp routines gives
+             much better results (not routing through gbk/big5 anymore).
+	   ! lib/Encode/HanConvert.pm
 ____________________________________________________________________________
-[  3921] By: autrijus                              on 2002/04/19  07:25:02
-        Log: * This be 0.06.
-	   ! README
-____________________________________________________________________________
-[  3920] By: autrijus                              on 2002/04/19  07:24:15
-        Log: * build .pm file first.
-	   ! Makefile.PL
-____________________________________________________________________________
-[  3919] By: autrijus                              on 2002/04/19  07:17:23
-        Log: * reflect structure change.
-	   + MANIFEST.SKIP
-	   ! MANIFEST
-____________________________________________________________________________
-[  3918] By: autrijus                              on 2002/04/19  07:17:06
-        Log: * make Encode.pm-less installation possible.
-	   + map/map2pm.pl
-	   ! Makefile.PL
-____________________________________________________________________________
-[  3917] By: autrijus                              on 2002/04/19  07:16:45
-        Log: * 5.005 friendliness 
-	   ! bin/b2g.pl bin/g2b.pl t/1-basic.t
-____________________________________________________________________________
-[  3916] By: autrijus                              on 2002/04/19  07:16:24
-        Log: * relocate HanConvert; add perl-based fallback.
-	   + lib/Encode/HanConvert.pm lib/Encode/HanConvert/Perl.pm-orig
-	   - HanConvert.pm
-____________________________________________________________________________
-[  3915] By: autrijus                              on 2002/04/19  06:45:45
-        Log: * make 5.005 happy with command-line utilities.
-	   ! bin/b2g.pl bin/g2b.pl
-____________________________________________________________________________
-[  3914] By: autrijus                              on 2002/04/19  04:57:49
-        Log: * changes.
-	   ! Changes
-____________________________________________________________________________
-[  3913] By: autrijus                              on 2002/04/19  04:56:13
-        Log: * This be 0.05.
-	   ! HanConvert.pm
-____________________________________________________________________________
-[  3911] By: autrijus                              on 2002/04/19  04:52:24
-        Log: * remove garbages.
-	   - Encode/big5-simp-miss.txt Encode/big5-simp.enc
-	   - Encode/euc-cn-trad-miss.txt Encode/gbk-trad.enc
-	   - big5-simp-miss.txt gb2312-invalid.txt gb2312-miss.txt
-	   - gbk-trad-miss.txt
-____________________________________________________________________________
-[  3910] By: autrijus                              on 2002/04/19  04:50:18
-        Log: * use map2ucm in installation process.
-	   ! HanConvert.pm MANIFEST Makefile.PL README
-____________________________________________________________________________
-[  3909] By: autrijus                              on 2002/04/19  04:49:47
-        Log: * new maps.
-	   + map/b2g_map.txt map/g2b_map.txt map/map2ucm.pl map/ucm2map.pl
-____________________________________________________________________________
-[  3907] By: autrijus                              on 2002/04/19  02:13:52
-        Log: * missing big5 codepoints
-	   ! gbk-trad-miss.txt
-____________________________________________________________________________
-[  3906] By: autrijus                              on 2002/04/19  00:53:34
-        Log: * the corresponding missing big5.
-	   ! big5-simp-miss.txt
-____________________________________________________________________________
-[  3905] By: autrijus                              on 2002/04/19  00:48:52
-        Log: * last batch.
-	   ! gbk-trad-miss.txt
-____________________________________________________________________________
-[  3904] By: autrijus                              on 2002/04/19  00:36:28
-        Log: * gbk mapping now complete. really.
-	   ! gbk-trad-miss.txt
-____________________________________________________________________________
-[  3903] By: autrijus                              on 2002/04/19  00:16:21
-        Log: * corrected missing mappings
-	   ! big5-simp-miss.txt gbk-trad-miss.txt
-____________________________________________________________________________
-[  3902] By: autrijus                              on 2002/04/18  23:48:10
-        Log: * all missed charsets.
-	   + big5-simp-miss.txt gb2312-invalid.txt gb2312-miss.txt
-	   + gbk-trad-miss.txt
-____________________________________________________________________________
-[  3896] By: autrijus                              on 2002/04/18  09:27:56
-        Log: * changes.
-	   ! Changes
-____________________________________________________________________________
-[  3895] By: autrijus                              on 2002/04/18  09:26:57
-        Log: * This be Encode::HanConvert, versoin 0.04.
-	   ! README
-____________________________________________________________________________
-[  3894] By: autrijus                              on 2002/04/18  09:25:53
-        Log: * reflect changed ucm files.
+[  2673] By: autrijus                              on 2002/12/11  15:43:52
+        Log: * now directly supports 'trad-simp' and 'simp-trad'
+             .ucm files!
 	   ! MANIFEST Makefile.PL
 ____________________________________________________________________________
-[  3893] By: autrijus                              on 2002/04/18  09:25:31
-        Log: * use enc2xs instead of compile.
-             * the mapping is made complete.
-	   - compile encode.h
-	   ! HanConvert.pm
+[  2672] By: autrijus                              on 2002/12/11  15:43:09
+        Log: * new code to directly generate utf8 simp<=>trad maps.
+	   + map/umap2ucm.pl
 ____________________________________________________________________________
-[  3491] By: autrijus                              on 2002/03/20  18:04:42
-        Log: * typo in POD.
-             * correct the test anomalies.
-	   ! HanConvert.pm t/1-basic.t
-____________________________________________________________________________
-[  3373] By: autrijus                              on 2002/03/06  12:32:58
-        Log: * changes.
-	   ! Changes
-____________________________________________________________________________
-[  3372] By: autrijus                              on 2002/03/06  12:30:52
-        Log: * This be 0.03.
-             * updated manifest.
-	   ! MANIFEST
-____________________________________________________________________________
-[  3371] By: autrijus                              on 2002/03/06  12:28:18
-        Log: * a test suite.
-	   + t/1-basic.t t/daode.b5 t/daode.gbk t/daode_g.b5 t/zhengqi.b5
-	   + t/zhengqi.gbk t/zhengqi_b.gbk
-____________________________________________________________________________
-[  3370] By: autrijus                              on 2002/03/06  12:28:05
-        Log: * more robust (and fast) scripts.
-	   ! bin/b2g.pl bin/g2b.pl
-____________________________________________________________________________
-[  3369] By: autrijus                              on 2002/03/06  12:27:48
-        Log: * clean up euc-cn.
-             * document the change.
-	   - Encode/euc-cn-trad.enc
-	   ! HanConvert.pm Makefile.PL
-____________________________________________________________________________
-[  3368] By: autrijus                              on 2002/03/06  12:27:16
-        Log: * upgrade to GBK.
-	   + Encode/gbk-trad.enc
-	   ! Encode/big5-simp.enc
-____________________________________________________________________________
-[  3367] By: autrijus                              on 2002/03/06  10:37:16
-        Log: * updates acknoledgements.
-             * mentions g2b.pl and b2g.pl in POD.
-	   ! HanConvert.pm
-____________________________________________________________________________
-[  3366] By: autrijus                              on 2002/03/06  10:36:32
-        Log: * Updated POD pages in utilities.
-	   ! bin/b2g.pl bin/g2b.pl
-____________________________________________________________________________
-[  3365] By: autrijus                              on 2002/03/06  10:35:45
-        Log: * updated codepoint table, courtesy of doggy @
-	     http://www.miniasp.com/.
-	   ! Encode/big5-simp-miss.txt Encode/big5-simp.enc
-	   ! Encode/euc-cn-trad-miss.txt Encode/euc-cn-trad.enc
-____________________________________________________________________________
-[  3364] By: autrijus                              on 2002/03/06  00:24:22
-        Log: * updated big5-simp from miniasp.
-             * missed characters.
-	   + Encode/big5-simp-miss.txt Encode/euc-cn-trad-miss.txt
-	   ! Encode/big5-simp.enc
-____________________________________________________________________________
-[  3349] By: autrijus                              on 2002/03/04  18:33:39
-        Log: * the real integration
-	   ! compile
-____________________________________________________________________________
-[  3348] By: autrijus                              on 2002/03/04  18:32:39
-        Log: * integrate mainline.
-	  !> compile
-____________________________________________________________________________
-[  3344] By: autrijus                              on 2002/03/04  07:51:15
-        Log: * doc patch from jedi.
-	   ! HanConvert.pm
-____________________________________________________________________________
-[  3342] By: autrijus                              on 2002/03/03  21:45:49
-        Log: * changes.
-	   + Changes
-	   ! MANIFEST
-____________________________________________________________________________
-[  3341] By: autrijus                              on 2002/03/03  21:43:55
-        Log: * This be Encode::HanConvert v0.02.
-             * the conversion functions now performs in-place editing in
-	     void context.
-             * documentations and #! lines for bin/ utilities.
-	   ! HanConvert.pm bin/b2g.pl bin/g2b.pl
-____________________________________________________________________________
-[  3340] By: autrijus                              on 2002/03/03  21:34:28
-        Log: * better table; hc++
-	   ! Encode/big5-simp.enc Encode/euc-cn-trad.enc
-____________________________________________________________________________
-[  3336] By: autrijus                              on 2002/03/03  00:54:35
-        Log: * Encode::HanConvert.
-	   + Encode/big5-simp.enc Encode/euc-cn-trad.enc HanConvert.pm
-	   + MANIFEST Makefile.PL README bin/b2g.pl bin/g2b.pl compile
-	   + encode.h
+[   647] By: autrijus                              on 2002/08/15  15:17:46
+        Log: * module cleanup continues.
+             * unicode map support for 5.6.0-5.7.2 perls
+             * fixed installation on dosish platforms.
+             * new test suites.
+	   + map/b2g_map.utf8 map/g2b_map.utf8 t/daode.b5u
+	   + t/daode.gbku t/daode_g.b5u t/zhengqi.b5u
+	   + t/zhengqi.gbku t/zhengqi_b.gbku
+	   - big5-simp.ucm gbk-trad.ucm
+	   ! MANIFEST Makefile.PL lib/Encode/HanConvert.pm
+	   ! lib/Encode/HanConvert/Perl.pm-orig
+	   ! map/map2pm.pl t/1-basic.t
