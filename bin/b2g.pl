@@ -1,8 +1,8 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/b2g.pl $ $Author: autrijus $
-# $Revision: #4 $ $Change: 3370 $ $DateTime: 2002/03/06 12:28:05 $
+# $Revision: #6 $ $Change: 3917 $ $DateTime: 2002/04/19 07:16:45 $
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 =head1 NAME
 
@@ -25,10 +25,11 @@ Example usage:
 
 =cut
 
-use utf8;
 use strict;
 
 (system("perldoc", $0), exit) if (grep /^-h/i, @ARGV);
+
+$SIG{__WARN__} = sub {};
 
 require Encode::HanConvert;
 while (<>) { Encode::HanConvert::big5_to_gb($_); print }

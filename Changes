@@ -1,4 +1,39 @@
 ____________________________________________________________________________
+[  3921] By: autrijus                              on 2002/04/19  07:25:02
+        Log: * This be 0.06.
+	   ! README
+____________________________________________________________________________
+[  3920] By: autrijus                              on 2002/04/19  07:24:15
+        Log: * build .pm file first.
+	   ! Makefile.PL
+____________________________________________________________________________
+[  3919] By: autrijus                              on 2002/04/19  07:17:23
+        Log: * reflect structure change.
+	   + MANIFEST.SKIP
+	   ! MANIFEST
+____________________________________________________________________________
+[  3918] By: autrijus                              on 2002/04/19  07:17:06
+        Log: * make Encode.pm-less installation possible.
+	   + map/map2pm.pl
+	   ! Makefile.PL
+____________________________________________________________________________
+[  3917] By: autrijus                              on 2002/04/19  07:16:45
+        Log: * 5.005 friendliness 
+	   ! bin/b2g.pl bin/g2b.pl t/1-basic.t
+____________________________________________________________________________
+[  3916] By: autrijus                              on 2002/04/19  07:16:24
+        Log: * relocate HanConvert; add perl-based fallback.
+	   + lib/Encode/HanConvert.pm lib/Encode/HanConvert/Perl.pm-orig
+	   - HanConvert.pm
+____________________________________________________________________________
+[  3915] By: autrijus                              on 2002/04/19  06:45:45
+        Log: * make 5.005 happy with command-line utilities.
+	   ! bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3914] By: autrijus                              on 2002/04/19  04:57:49
+        Log: * changes.
+	   ! Changes
+____________________________________________________________________________
 [  3913] By: autrijus                              on 2002/04/19  04:56:13
         Log: * This be 0.05.
 	   ! HanConvert.pm

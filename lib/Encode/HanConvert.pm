@@ -1,24 +1,28 @@
-# $File: //member/autrijus/Encode-HanConvert/HanConvert.pm $ $Author: autrijus $
-# $Revision: #9 $ $Change: 3913 $ $DateTime: 2002/04/19 04:56:13 $
+# $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert.pm $ $Author: autrijus $
+# $Revision: #1 $ $Change: 3916 $ $DateTime: 2002/04/19 07:16:24 $
 
 package Encode::HanConvert;
-use 5.007003;
+use vars qw/$VERSION @EXPORT @EXPORT_OK/;
 
-our $VERSION = '0.05';
-our @EXPORT = qw(
+$VERSION = '0.06';
+@EXPORT = qw(
     big5_to_gb trad_to_simp big5_to_simp gb_to_trad big5_to_trad gb_to_simp
     gb_to_big5 simp_to_trad simp_to_big5 trad_to_gb trad_to_big5 simp_to_gb
 );
 
-our @EXPORT_OK = qw(simple trad);
-
-no warnings 'redefine';
+@EXPORT_OK = qw(simple trad);
 
 use base 'Exporter';
-use Encode qw|encode decode from_to|;
-use XSLoader;
 
-XSLoader::load(__PACKAGE__, $VERSION);
+if (eval "use Encode qw|encode decode from_to|; 1") {
+    require XSLoader;
+    XSLoader::load(__PACKAGE__, $VERSION);
+}
+else {
+    local $^W;
+    eval 'use Encode::HanConvert::Perl; 1'
+	or die "Can't load Perl-based Converter";
+}
 
 sub big5_to_gb ($) {
     local $^W; # shuts Encode::HZ's redefine warnings up
@@ -119,7 +123,7 @@ Encode::HanConvert - Traditional and Simplified Chinese mappings
 
 =head1 VERSION
 
-This document describes version 0.05 of Encode::HanConvert, released
+This document describes version 0.06 of Encode::HanConvert, released
 April 19, 2002.
 
 =head1 SYNOPSIS
@@ -132,7 +136,8 @@ B<g2b.pl> [ I<inputfile> ...] > I<outputfile>
 
 In your program:
 
-    use Encode::HanConvert; # needs perl 5.7.3 or better
+    # needs Encode.pm 1.41; otherwise, autoloads Encode::Convert::Perl 
+    use Encode::HanConvert; 
 
     # Conversion between Chinese encodings
     $euc_cn = big5_to_gb($big5); # Big5 to GBK
@@ -168,6 +173,11 @@ In your program:
 This module is an attempt to solve most common problems occured in
 Traditional vs. Simplified Chinese conversion, in an efficient,
 flexible way, without resorting to external tools or modules.
+
+If you are using perl 5.7.2 or earlier, all Unicode-related functions
+are disabled, and B<Encode::HanConvert::Perl> is automagically loaded
+and used instead. In that case, please consult L<Encode::HanConvert::Perl>
+instead.
 
 After installing this module, you'll have two additional encoding
 formats: C<big5-simp> maps I<Big5> into Unicode's Simplified Chinese
@@ -211,6 +221,7 @@ mapping with B<Big5> and B<GBK> encodings.
 Also, L<Encode::HanConvert> loads up much faster:
 
     0.148u 0.046s 0:00.19 94.7% # Encode::HanConvert
+    1.192u 0.046s 0:01.26 97.6% # Encode::HanConvert::Perl
     7.096u 0.015s 0:07.23 98.2% # Lingua::ZH::HanConvert (v0.12)
 
 The difference in actual conversion is much higher. Use 32k text of
@@ -218,6 +229,7 @@ trad=>simp as an example:
 
     0.082u 0.031s 0:00.12 91.6% # iconv | b2g | iconv
     0.263u 0.038s 0:00.30 96.6% # Encode::HanConvert
+    1.461u 0.071s 0:01.57 97.4% # Encode::HanConvert::Perl
    23.715u 0.054s 0:24.51 96.9% # Lingua::ZH::HanConvert (v0.12)
 
 The C<b2g> above refers to Yeung and Lee's I<HanZi Converter>, a C-based
@@ -261,9 +273,10 @@ showing me how to use B<Encode> and PerlIO. Thanks!
 
 =head1 SEE ALSO
 
-L<Encode>, L<Lingua::ZH::HanConvert>, L<Text::Iconv>
+L<Encode::HanConvert::Perl>, L<Encode>, L<Lingua::ZH::HanConvert>,
+L<Text::Iconv>
 
-The F<b2g.pl> and F<g2b.pl> utilities installed with this module.
+The L<b2g.pl> and L<g2b.pl> utilities installed with this module.
 
 =head1 AUTHORS
 

@@ -1,5 +1,6 @@
 ^MANIFEST.SKIP$
 ^big5-simp.ucm$
 ^gbk-trad.ucm$
+^lib/Encode/HanConvert/Perl.pm$
 ^blib/.*
-^Makefile$
+^Makefile

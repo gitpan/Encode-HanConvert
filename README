@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/README $ $Author: autrijus $
-# $Revision: #3 $ $Change: 3910 $ $DateTime: 2002/04/19 04:50:18 $
+# $Revision: #4 $ $Change: 3921 $ $DateTime: 2002/04/19 07:25:02 $
 
 This is the README file for Encode::HanConvert, two encoding
 formats to facilitate mappings between traditional and simplified
@@ -15,7 +15,14 @@ make test
 make install
 enc2xs -C	# optional; updates Encode.pm's on-demand loading DB
 
-You will need perl 5.7.3 or better, as well as Encode 1.41 or better.
+You will need perl 5.7.3 or better, as well as Encode 1.41 or better
+for Unicode-related functions. Otherwise, Encode::HanConvert::Perl
+is used automatically, which provides perl-based implementations to
+big5_to_gb() and gb_to_big5().
+
+Regardless of the implementation, two command-line utilities ('b2g.pl'
+and 'g2b.pl') are installed for simple conversion between GBK and Big5
+encodings.
 
 For this module's typical usage and examples, please consult its POD
 documentation.

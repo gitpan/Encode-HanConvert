@@ -1,9 +1,37 @@
 # $File: //member/autrijus/Encode-HanConvert/Makefile.PL $ $Author: autrijus $
-# $Revision: #4 $ $Change: 3910 $ $DateTime: 2002/04/19 04:50:18 $
+# $Revision: #6 $ $Change: 3920 $ $DateTime: 2002/04/19 07:24:15 $
 
-use 5.007003;
 use strict;
+use vars qw(@MAKEOPTS $Path);
+
+use File::Spec;
+use File::Basename;
 use ExtUtils::MakeMaker;
+
+BEGIN {
+    $Path = dirname($0);
+    system($^X, File::Spec->catfile($Path, qw(map map2pm.pl)))
+	unless -e File::Spec->catfile($Path, qw(lib Encode HanConvert Perl.pm));
+
+    @MAKEOPTS = (
+	EXE_FILES	=> [ <bin/*> ],
+	ABSTRACT	=> 'Traditional and Simplified Chinese mappings',
+	AUTHOR		=> 'Autrijus Tang (autrijus@autrijus.org)',
+	NAME		=> 'Encode::HanConvert',
+	VERSION_FROM	=> "lib/Encode/HanConvert.pm",
+	'dist'		=> {
+	    COMPRESS	=> 'gzip -9f',
+	    SUFFIX	=> 'gz',
+	    DIST_DEFAULT => 'all tardist',
+	},
+    );
+    
+    if ($] < 5.007003) {
+	print "Encode.pm support not possible; only Big5 <=> GBK will be available.\n";
+	WriteMakefile (@MAKEOPTS);
+	exit;
+    }
+}
 
 # Please edit the following to your taste!
 my $name = 'HanConvert';
@@ -13,7 +41,7 @@ my %tables = (
 
 if (grep { ! -e $_ } map { @{$_} } values(%tables)) {
     # build .ucm files first.
-    system($^X, 'map/map2ucm.pl');
+    system($^X, File::Spec->($Path, qw(map map2ucm.pl)));
 }
 
 #### DO NOT EDIT BEYOND THIS POINT!
@@ -41,15 +69,9 @@ for my $d (@INC){
 print "encode.h is at $encode_h\n";
 
 WriteMakefile(
+	      @MAKEOPTS,
               INC		=> "-I$encode_h",
-	      NAME		=> 'Encode::'.$name,
-	      VERSION_FROM	=> "$name.pm",
 	      OBJECT		=> '$(O_FILES)',
-	      'dist'		=> {
-		  COMPRESS	=> 'gzip -9f',
-		  SUFFIX	=> 'gz',
-		  DIST_DEFAULT => 'all tardist',
-	      },
 	      MAN3PODS	=> {},
 	      PREREQ_PM => {
 			    'Encode'     => "1.41",
