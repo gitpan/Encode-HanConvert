@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/g2b.pl $ $Author: autrijus $
-# $Revision: #13 $ $Change: 10740 $ $DateTime: 2004/06/03 22:02:31 $
+# $Revision: #14 $ $Change: 10742 $ $DateTime: 2004/06/04 07:15:15 $
 
 $VERSION = '0.11';
 
@@ -69,7 +69,7 @@ while (<>) {
 }
 
 use constant MAP => DICT && {
-    map { UTF8 ? Encode::decode(big5 => $_) : quotemeta($_) } reverse (
+    map { UTF8 ? Encode::decode(big5 => $_) : $_ } reverse (
 '乙太' => '以太',
 '乙太網路' => '以太網絡',
 '九九乘法表' => '九九表',

@@ -1,4 +1,10 @@
 ____________________________________________________________________________
+[ 10742] By: autrijus                              on 2004/06/04  07:15:15
+        Log: * This be 0.31.
+             * Mitrophan points out that while b2g.pl is fixed,
+             g2b.pl still got an extra quotemeta().
+	   ! bin/g2b.pl lib/Encode/HanConvert.pm
+____________________________________________________________________________
 [ 10740] By: autrijus                              on 2004/06/03  22:02:31
         Log: * 0.30, for real.
              * misplaced the quotemeta(). oops.
