@@ -1,11 +1,12 @@
 # $File: //member/autrijus/Encode-HanConvert/AUTHORS $
-# $Revision: #2 $ $Change: 3938 $ $DateTime: 2003/01/27 22:48:39 $
+# $Revision: #3 $ $Change: 5585 $ $DateTime: 2003/05/03 11:28:07 $
 
 Here is a list of people and their CPAN id, extracted from the Changes
 file and the mailing list archives.  These people have either submitted
 patches or suggestions, or their bug reports or comments have inspired
 the appropriate patches.  Corrections, additions, deletions welcome:
 
+Alan Chen
 Andy Lester		(PETDANCE)
 Antti Lankila
 Arthur Bergman		(ABERGMAN)

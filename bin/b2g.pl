@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # $File: //member/autrijus/Encode-HanConvert/bin/b2g.pl $ $Author: autrijus $
-# $Revision: #9 $ $Change: 3948 $ $DateTime: 2003/01/27 23:57:50 $
+# $Revision: #11 $ $Change: 4445 $ $DateTime: 2003/02/27 12:09:56 $
 
 $VERSION = '0.09';
 
@@ -331,6 +331,10 @@ use constant MAP => DICT && {
 '氂牛' => '牦牛',
 '衚同' => '胡同',
 '擣衣' => '捣衣',
+'回覆' => '回复',
+'位元组' => '字节',
+'链结' => '链接',
+'密码' => '口令',
 ) };
 
 __END__

@@ -1,4 +1,22 @@
 ____________________________________________________________________________
+[  5594] By: autrijus                              on 2003/05/04  03:56:59
+        Log: * This be 0.25.
+	   ! Makefile.PL
+____________________________________________________________________________
+[  5585] By: autrijus                              on 2003/05/03  11:28:07
+        Log: * inhibit incorrect utf8iciation of filehandles on Perl
+	       5.8.0,
+             as reported by Alan Chen.
+	   ! AUTHORS Makefile.PL lib/Encode/HanConvert.pm
+____________________________________________________________________________
+[  4090] By: autrijus                              on 2003/02/05  04:18:14
+        Log: * some more rt-inspired terminologies.
+	   ! bin/b2g.pl bin/g2b.pl
+____________________________________________________________________________
+[  3949] By: autrijus                              on 2003/01/28  00:05:51
+        Log: * changes and signatures.
+	   ! Changes SIGNATURE
+____________________________________________________________________________
 [  3948] By: autrijus                              on 2003/01/27  23:57:50
         Log: * last-minute typo correction.
 	   ! bin/b2g.pl

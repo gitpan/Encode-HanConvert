@@ -1,11 +1,10 @@
 # $File: //member/autrijus/Encode-HanConvert/Makefile.PL $ $Author: autrijus $
-# $Revision: #8 $ $Change: 3937 $ $DateTime: 2003/01/27 22:44:58 $
+# $Revision: #10 $ $Change: 5594 $ $DateTime: 2003/05/04 03:56:59 $
 
 use strict;
 use ExtUtils::MakeMaker;
 use Config;
 
-use strict;
 use vars qw(@MAKEOPTS $Path);
 
 use File::Spec;
@@ -24,6 +23,9 @@ sub _can_run {
 }
 
 BEGIN {
+    # inhibit incorrect utf8iciation of filehandles on Perl 5.8.0
+    $ENV{LC_ALL} = $ENV{LC_CTYPE} = $ENV{LANG} = 'C';
+
     $Path = dirname($0);
     system($^X, File::Spec->catfile($Path, qw(map map2pm.pl)))
 	unless -e File::Spec->catfile($Path, qw(lib Encode HanConvert Perl.pm));

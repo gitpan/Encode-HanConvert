@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Encode-HanConvert/lib/Encode/HanConvert/Perl.pm-orig $ $Author: autrijus $
-# $Revision: #5 $ $Change: 3945 $ $DateTime: 2003/01/27 23:40:48 $
+# $Revision: #6 $ $Change: 4445 $ $DateTime: 2003/02/27 12:09:56 $
 
 package Encode::HanConvert::Perl;
 
@@ -22,9 +22,9 @@ sub big5_to_gb ($) {
     use bytes;
 ### /perl 5.006 ###
 
-    %b2g = eval q*(
+    eval q*( %b2g = (
 	### include b2g_map.txt ###
-    )* unless %b2g;
+    ) )* unless %b2g;
 
     if (defined wantarray) {
 	my $var = $_[0];
@@ -41,9 +41,9 @@ sub gb_to_big5 ($) {
     use bytes;
 ### /perl 5.006 ###
 
-    %g2b = eval q*(
+    eval q*( %g2b = (
 	### include g2b_map.txt ###
-    )* unless %g2b;
+    ) )* unless %g2b;
 
     if (defined wantarray) {
 	my $var = $_[0];
@@ -61,9 +61,9 @@ sub trad_to_simp ($) {
     use utf8; # 5.006
     require Encode if $] >= 5.008;
 
-    %t2s = eval q*use utf8;(
+    eval q*( %t2s = (
 	### include b2g_map.utf8 ###
-    )* unless %t2s;
+    ) )* unless %t2s;
 
     if (defined wantarray) {
 	my $var = $_[0];
@@ -81,9 +81,9 @@ sub simp_to_trad ($) {
     use utf8; # 5.006
     require Encode if $] >= 5.008;
 
-    %s2t = eval q*use utf8;(
+    eval q*( %s2t = (
 	### include g2b_map.utf8 ###
-    )* unless %s2t;
+    ) )* unless %s2t;
 
     if (defined wantarray) {
 	my $var = $_[0];
