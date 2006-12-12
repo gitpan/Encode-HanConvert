@@ -1,8 +1,7 @@
 #!/usr/local/bin/perl
-# $File: //member/autrijus/Encode-HanConvert/bin/b2g.pl $ $Author: autrijus $
-# $Revision: #14 $ $Change: 10740 $ $DateTime: 2004/06/03 22:02:31 $
+# $Id: /mirror/trunk/bin/b2g.pl 22 2006-12-11T01:24:06.475550Z kcwu  $
 
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 =head1 NAME
 
@@ -56,16 +55,39 @@ use constant DICT => ($opts{p} and (!UTF8 or $] >= 5.008));
 
 use Encode::HanConvert;
 
-if (UTF8 and $] >= 5.008) { binmode(STDIN, ':utf8'); binmode(STDOUT, ':utf8') }
-
 my $KEYS = join('|', map quotemeta, sort { length($b) <=> length($a) } keys %{+MAP}) if DICT;
 my $MAP  = +MAP if DICT;
 
-while (<>) {
-    if (UTF8) { Encode::HanConvert::trad_to_simp($_) }
-	 else { Encode::HanConvert::big5_to_gb($_) }
-    if (DICT) { s/($KEYS)/$MAP->{$1}/g }
-    print;
+if (@ARGV) {
+    for (@ARGV) {
+	unless(open F, $_) {
+	    warn "Can't open $_: $!";
+	    next;
+	}
+	convert(\*F);
+	close F;
+    }
+} else {
+    convert(\*STDIN);
+}
+
+sub convert {
+    my ($fh) = @_;
+    if ($] >= 5.008) {
+	if (UTF8) {
+	    binmode($fh, ':encoding(trad-simp)'); binmode(STDOUT, ':utf8')
+	} else {
+	    binmode($fh, ':encoding(big5-simp)'); binmode(STDOUT, ':encoding(gbk)')
+	}
+    }
+    while (<$fh>) {
+	unless ($] >= 5.008) {
+	    if (UTF8) { Encode::HanConvert::trad_to_simp($_) }
+	    else { Encode::HanConvert::big5_to_gb($_) }
+	}
+	if (DICT) { s/($KEYS)/$MAP->{$1}/g }
+	print;
+    }
 }
 
 use constant MAP => DICT && {
@@ -367,11 +389,13 @@ L<g2b.pl>, L<Encode::HanConvert>
 
 =head1 AUTHORS
 
-Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
+Currently maintained by Kuang-che Wu E<lt>kcwu@csie.orgE<gt>.  Orignal author:
+Audreyt Tang E<lt>cpan@audreyt.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2002, 2003, 2004 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2002, 2003, 2004 by Augreyt Tang E<lt>cpan@audreyt.orgE<gt>.
+Copyright 2006 by Kuang-che Wu E<lt>kcwu@csie.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.
