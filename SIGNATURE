@@ -15,15 +15,23 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 73d8325b60f31423ba347175e68ed1333da87aba AUTHORS
-SHA1 26ac06d6804a5dfb458171d343b21ec0774e1295 Changes
-SHA1 5665793776b108a9dab60299e1367960774575cf MANIFEST
-SHA1 1c7d9e741bb97253754f09768bcbfcbc67e6be53 MANIFEST.SKIP
-SHA1 7208939b1e4a06276eb22df4061d87a1d49cca9f META.yml
-SHA1 bb623707762265733a8322fe9adf8bb6973d45c1 Makefile.PL
+SHA1 8bde6389d6bf2577b1995010aba37a39d72d32e4 Changes
+SHA1 b5efcad5c9853d11877e016d782cc80e3075a3d2 MANIFEST
+SHA1 76a205725ec836b0685e2642869f362a681e0f04 MANIFEST.SKIP
+SHA1 f40f3edf119ee54a248f6538d5dcfe9490147c46 META.yml
+SHA1 cd5d2efe2f0cc6781913785f6b61f4fec5614f27 Makefile.PL
 SHA1 1bf5b5bd9e0b1e75ae35dfe2487d13122d39e9c6 README
 SHA1 874098a812c66b0fb65a63b3fc164a3d21be2aad bin/b2g.pl
 SHA1 1d29b5d27a1ae42d646884b2836e2742ee1a0eb3 bin/g2b.pl
-SHA1 18531c99e24453630a97d269973bf47821157ee1 lib/Encode/HanConvert.pm
+SHA1 78edb89a439463e44c33a72bbee84c54d0dc8aaf inc/Module/Install.pm
+SHA1 8ea4e37df83fd0c1c050be5c8da75545c3828d9b inc/Module/Install/Base.pm
+SHA1 1da6031583c32f0d1ec073b8376102fc51427dcc inc/Module/Install/Can.pm
+SHA1 b779375b90c16af2f31f38a1dd2b5df223c7f2fb inc/Module/Install/Fetch.pm
+SHA1 2054450e1e9c1dd8056362bf4a64ae70d5d71476 inc/Module/Install/Makefile.pm
+SHA1 5d6189b2cad15cf9932a28faafd55130c8247e83 inc/Module/Install/Metadata.pm
+SHA1 02af973fae2ac3531fa6b704574b2b8cb2a08148 inc/Module/Install/Win32.pm
+SHA1 3a2eab96e91cca8d99938cda7791759ae9d97b3a inc/Module/Install/WriteAll.pm
+SHA1 eb866c24f09ca5cc6cf35feaf0746d9af873c9f2 lib/Encode/HanConvert.pm
 SHA1 eb930c4847e7c11ac36f7fdd6aab9168f841ce54 lib/Encode/HanConvert/Perl.pm-orig
 SHA1 2eb4c272f5f3bb373ddebbb7a3cd744c852ad59f map/DerivedAge.txt
 SHA1 11adc15c8413b3f553bdb7702e0430ba4bff8d53 map/b2g_map.txt
@@ -43,9 +51,9 @@ SHA1 c78f9934ff08e2aa09d74e4b7352ed44e89fd3aa t/zhengqi.b5
 SHA1 325cecec4c25d579634f4a423ccf91b9330cb330 t/zhengqi.gbk
 SHA1 325cecec4c25d579634f4a423ccf91b9330cb330 t/zhengqi_b.gbk
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.6 (FreeBSD)
+Version: GnuPG v1.4.3 (Darwin)
 
-iD8DBQFFftD34yBMH10rsRoRAuK3AJ9f8hxleqKmHnRxSyf3WAIZiQ3whgCfXuaK
-s1N0VAmVwRkyTpa4Zj7MUjU=
-=4pzJ
+iD8DBQFGnB5vtLPdNzw1AaARAnpTAJ9kdUk6HHBOKucRaLwf/6nEJCUjSQCeMXxl
+iB8GNgEF3ujqwuZfOI6Zd0I=
+=xGKu
 -----END PGP SIGNATURE-----
